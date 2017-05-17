@@ -129,13 +129,8 @@ sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong;
 #Right Answer Feedback
 sound{ wavefile {filename = "correct_sound.wav"; }; } correct;
 
-
-
-
-
-
-
-
+# Now that all stimuli are ready to be used the beginning of the experiment will be coded in the following section.
+# All trials will be named, so that we can control the flow of the experiment using pcl.
 
 
 #Welcome page & Instruction Page trials
@@ -164,17 +159,15 @@ trial{
 	} instruction_page3;
 } start_screen;
 
-#correct sound trial
+#Correct and wrong sound trial. This needs to be made so we can call this trial everytime a correct or wrong answer is given
 trial{
 	sound correct;
-	duration = 250;
+	duration = 300;
 	time = 0;
 	} correct_t;
-	
-#wrong sound trial
 trial{
 	sound wrong;
-	duration = 250;
+	duration = 300;
 	time = 0;
 	} wrong_t;
 	
@@ -189,6 +182,8 @@ trial{
 } first_trial;
 
 
+
+#PCL to control the flow of the experiment
 begin_pcl;
 	start_screen.present();
 	first_trial.present();
