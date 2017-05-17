@@ -13,10 +13,14 @@ begin;
 
 
 # The next section will be the coding of all stimuli in picture objects. This includes the welcome and instruction pages
+# This makes the scenario clearer. Each subsection will have a comment header to indicate what part is being coded
 
 # Welcome Page
 text{caption = "Welcome to this experiment, and thank you for your participation
 					press the spacebar to go to the instruction screen";} welc_text;
+					
+picture{text welc_text; x = 0; y = 0;} welc_pic;
+
 #Instruction pages
 text{caption = "In this task, you need to match a card to one of four cards presented at the top of the screen.
 					Press one of the four buttons corresponding to the letter next to the cards to select to 
@@ -43,21 +47,96 @@ text{ caption = "
 					";} inst3_text;
 					
 
-picture{text welc_text; x = 0; y = 0;} welc_pic;
-picture{text inst1_text; x = 0; y = 0;} inst1_pic;
-picture{text inst3_text; x = 0; y = 0;} inst3_pic;
+
+picture{ text inst1_text; x = 0; y = 0;} inst1_pic;
+picture{ text inst3_text; x = 0; y = 0;} inst3_pic;
 
 #instruction page example of experiment
-bitmap { filename = "options.bmp";} qoptions;
-bitmap { filename = "b1g.bmp"; } qb1g;
-picture { text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap qb1g; x = 0; y = -300; } example;
+bitmap{ filename = "options.bmp";} qoptions;
+bitmap{ filename = "b1g.bmp"; } qb1g;
+picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap qb1g; x = 0; y = -300; } inst2_pic;
 
+
+# Coding of all stimuli
+
+bitmap{ filename = "b1g.bmp";} bb1g;
+bitmap{ filename = "b1gr.bmp"} bb1gr;
+bitmap{ filename = "b2g.bmp"} bb2g;
+bitmap{ filename = "b2r.bmp"} bb2r;
+bitmap{ filename = "b3gr.bmp"} bb3gr;
+bitmap{ filename = "b3r.bmp"} bb3r;
+
+bitmap{ filename = "j1b.bmp"} bj1b;
+bitmap{ filename = "j1g.bmp"} bj1g;
+bitmap{ filename = "j3r.bmp"} bj3r;
+bitmap{ filename = "j3b.bmp"} bj3b;
+bitmap{ filename = "j4g.bmp"} bj4g;
+bitmap{ filename = "j4r.bmp"} bj4r;
+
+bitmap{ filename = "s1b.bmp"} bs1b;
+bitmap{ filename = "s1gr.bmp"} bs1gr;
+bitmap{ filename = "s2b.bmp"} bs2b;
+bitmap{ filename = "s2r.bmp"} bs2r;
+bitmap{ filename = "s4gr.bmp"} bs4gr;
+bitmap{ filename = "s4r.bmp"} bs4r;
+
+bitmap{ filename = "sch2b.bmp"} bsch2b;
+bitmap{ filename = "sch2g.bmp"} bsch2g;
+bitmap{ filename = "sch3b.bmp"} bsch3b;
+bitmap{ filename = "sch3gr.bmp"} bsch3gr;
+bitmap{ filename = "sch4g.bmp"} bsch4;
+bitmap{ filename = "sch4gr. bmp"} bsch4gr;
+
+bitmap{ filename = "options.bmp"} boptions;
+
+# Every picture consists of the 4 options the participants can select and the stimulus they have to sort.
+
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb1g; x = 0; y = -300;} b1g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb1gr; x = 0; y = -300;} b1gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb2g; x = 0; y = -300;} b2g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb2r; x = 0; y = -300;} b2r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb3gr; x = 0; y = -300;} b3gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb3r; x = 0; y = -300;} b3r;
+
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj1b; x = 0; y = -300;} j1b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj1g; x = 0; y = -300;} j1g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj3r; x = 0; y = -300;} j3r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj3b; x = 0; y = -300;} j3b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj4g; x = 0; y = -300;} j4g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj4r; x = 0; y = -300;} j4r;
+
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs1b; x = 0; y = -300;} s1b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs1gr; x = 0; y = -300;} s1gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs2b; x = 0; y = -300;} s2b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs2r; x = 0; y = -300;} s2r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs4gr; x = 0; y = -300;} s4gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs4r; x = 0; y = -300;} s4r;
+
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2b; x = 0; y = -300;} sch2b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2g; x = 0; y = -300;} sch2g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3b; x = 0; y = -300;} sch3b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3gr; x = 0; y = -300;} sch3gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4g; x = 0; y = -300;} sch4g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4gt; x = 0; y = -300;} sch4gr;
+
+# Now that all stimuli have been put in a picture element next the feedback will be coded
+# I decided to go with auditory feedback. The feedback that a participant hears after giving a wrong answer is a buzzer
+# When a correct answer is given the line 'You got it' will be played.
 
 #Wrong Answer Feedback
 sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong;
 
 #Right Answer Feedback
 sound{ wavefile {filename = "correct_sound.wav"; }; } correct;
+
+
+
+
+
+
+
+
+
 
 #Welcome page & Instruction Page trials
 trial{
@@ -74,7 +153,7 @@ trial{
 		duration = response;
 	} instruction_page1;
 	stimulus_event{
-		picture example;
+		picture inst2_pic;
 		delta_time = 0;
 		duration = response;
 	} instruction_page2;
