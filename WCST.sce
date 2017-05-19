@@ -329,7 +329,7 @@ array{
 		picture sch4gr;
 		target_button = 4;
 	};	
-}color;
+}color_1;
 
 
 
@@ -486,7 +486,7 @@ array{
 		incorrect_feedback = wrong_t;
 		picture sch4gr;
 		target_button = 1;
-}shape;
+}shape_1;
 
 #Rule is number of objects
 array{
@@ -639,6 +639,7 @@ array{
 		incorrect_feedback = wrong_t;
 		picture sch4gr;
 		target_button = 4;
+	};
 }number_1;
 
 
@@ -649,7 +650,7 @@ begin_pcl;
 start_screen.present();
 
 #Next for each rule 5 trials have been made. To minimize noise the trials within each rule are randomized using the .shuffle function
-color.shuffle();
+color_1.shuffle();
 shape_1.shuffle();
 number_1.shuffle();
 
@@ -657,31 +658,17 @@ number_1.shuffle();
 loop
 	int i = 1
 until
-	i > 
+	i > color_1.count();
 begin
-	color[i].present();
+	if i < 6 then
+		color_1[i].present();
+	elseif i > 5 && i < 11 then
+		shape_1[i].present();
+	elseif i > 11 && i < 16 then
+		number_1[i].present();
 	i = i + 1;
 end;
 
-
-shape_1.shuffle();
-loop
-	int i = 1
-until
-	i > shape_1.count()
-begin
-	shape_1[i].present();
-	i = i + 1;
-end;
-number_1.shuffle();
-loop
-		int i = 1
-until
-	i > number_1.count()
-begin
-	number_1[i].present();
-	i = i + 1;
-end;
 
 
 
