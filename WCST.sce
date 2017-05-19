@@ -172,7 +172,8 @@ trial{
 	time = 0;
 	} wrong_t;
 
-
+# In the following section three arrays are made. Each array contains (for now) 5 trials for each rule. 
+# The trials are put in an array so that we can randomize the order the trials are presented in.
 # Trials where the rule is match on background color
 array{
 trial {
@@ -256,12 +257,60 @@ trial {
 };
 }shape_1;
 
+#Rule is number of objects
+array{
+	trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture s1b;
+	target_button = 1;
+	deltat = 0;
+	};
+	
+	trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture j4g;
+	target_button = 4;
+	deltat = 0;
+	};
+	
+	trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture b3r;
+	target_button = 3;
+	deltat = 0;
+	};
+	
+	trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture j4r;
+	target_button = 4;
+	deltat = 0;
+	};
+	
+	trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture sch2b;
+	target_button = 2;
+	deltat = 0;
+	};
+}number_1;
+
 
 #Begin PCL to control flow of experiment
-
 begin_pcl;
+
+#To begin the instruction screens need to be presented
 start_screen.present();
+
+#Next for each rule 5 trials have been made. To minimize noise the trials within each rule are randomized using the .shuffle function
 color_1.shuffle();
+
+#A loop is then used to present all 5 trials within each array
 loop
 	int i = 1
 until
@@ -277,6 +326,15 @@ until
 	i > shape_1.count()
 begin
 	shape_1[i].present();
+	i = i + 1;
+end;
+number_1.shuffle();
+loop
+		int i = 1
+until
+	i > number_1.count()
+begin
+	number_1[i].present();
 	i = i + 1;
 end;
 
