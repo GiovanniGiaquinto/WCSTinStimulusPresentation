@@ -155,7 +155,7 @@ trial{
 		picture inst3_pic;
 		delta_time = 0;
 	} instruction_page3;
-};
+}start_screen;
 
 #Correct and wrong sound trial. This needs to be made so we can call this trial everytime a correct or wrong answer is given
 # and the auditory feedback can be given.
@@ -164,14 +164,17 @@ trial{
 	sound correct;
 	duration = 300;
 	time = 0;
-	} correct_t;
+} correct_t;
+	
 trial{
 	sound wrong;
 	duration = 300;
 	time = 0;
 	} wrong_t;
 
+
 # Trials where the rule is match on background color
+array{
 trial {
 	correct_feedback = correct_t;
 	incorrect_feedback = wrong_t;
@@ -206,8 +209,12 @@ trial {
 	picture s2r;
 	target_button = 1;
 };
+}color_1;
+
+
 
 # Rule is shape
+array{
 trial {
 	correct_feedback = correct_t;
 	incorrect_feedback = wrong_t;
@@ -247,8 +254,31 @@ trial {
 	target_button = 2;
 	deltat = 0;
 };
+}shape_1;
 
-#PCL to control the flow of the experiment
+
+#Begin PCL to control flow of experiment
+
+begin_pcl;
+start_screen.present();
+color_1.shuffle();
+loop
+	int i = 1
+until
+	i > color_1.count()
+begin
+	color_1[i].present();
+	i = i + 1;
+end;
+shape_1.shuffle();
+loop
+	int i = 1
+until
+	i > shape_1.count()
+begin
+	shape_1[i].present();
+	i = i + 1;
+end;
 
 
 
