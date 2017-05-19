@@ -3,9 +3,11 @@ default_background_color = 255, 255, 255;
 default_text_color = 0, 0, 0;
 default_font = "cambria";
 default_font_size = 28;
+
 active_buttons = 5;
 response_matching = simple_matching;
 default_trial_type = first_response;
+default_picture_duration = response;
 
 
 #SDL
@@ -60,64 +62,64 @@ picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap
 # Coding of all stimuli
 
 bitmap{ filename = "b1g.bmp";} bb1g;
-bitmap{ filename = "b1gr.bmp"} bb1gr;
-bitmap{ filename = "b2g.bmp"} bb2g;
-bitmap{ filename = "b2r.bmp"} bb2r;
-bitmap{ filename = "b3gr.bmp"} bb3gr;
-bitmap{ filename = "b3r.bmp"} bb3r;
+bitmap{ filename = "b1gr.bmp";} bb1gr;
+bitmap{ filename = "b2g.bmp";} bb2g;
+bitmap{ filename = "b2r.bmp";} bb2r;
+bitmap{ filename = "b3gr.bmp";} bb3gr;
+bitmap{ filename = "b3r.bmp";} bb3r;
 
-bitmap{ filename = "j1b.bmp"} bj1b;
-bitmap{ filename = "j1g.bmp"} bj1g;
-bitmap{ filename = "j3r.bmp"} bj3r;
-bitmap{ filename = "j3b.bmp"} bj3b;
-bitmap{ filename = "j4g.bmp"} bj4g;
-bitmap{ filename = "j4r.bmp"} bj4r;
+bitmap{ filename = "j1b.bmp";} bj1b;
+bitmap{ filename = "j1g.bmp";} bj1g;
+bitmap{ filename = "j3r.bmp";} bj3r;
+bitmap{ filename = "j3b.bmp";} bj3b;
+bitmap{ filename = "j4g.bmp";} bj4g;
+bitmap{ filename = "j4r.bmp";} bj4r;
 
-bitmap{ filename = "s1b.bmp"} bs1b;
-bitmap{ filename = "s1gr.bmp"} bs1gr;
-bitmap{ filename = "s2b.bmp"} bs2b;
-bitmap{ filename = "s2r.bmp"} bs2r;
-bitmap{ filename = "s4gr.bmp"} bs4gr;
-bitmap{ filename = "s4r.bmp"} bs4r;
+bitmap{ filename = "s1b.bmp";} bs1b;
+bitmap{ filename = "s1gr.bmp";} bs1gr;
+bitmap{ filename = "s2b.bmp";} bs2b;
+bitmap{ filename = "s2r.bmp";} bs2r;
+bitmap{ filename = "s4gr.bmp";} bs4gr;
+bitmap{ filename = "s4r.bmp";} bs4r;
 
-bitmap{ filename = "sch2b.bmp"} bsch2b;
-bitmap{ filename = "sch2g.bmp"} bsch2g;
-bitmap{ filename = "sch3b.bmp"} bsch3b;
-bitmap{ filename = "sch3gr.bmp"} bsch3gr;
-bitmap{ filename = "sch4g.bmp"} bsch4;
-bitmap{ filename = "sch4gr. bmp"} bsch4gr;
+bitmap{ filename = "sch2b.bmp";} bsch2b;
+bitmap{ filename = "sch2g.bmp";} bsch2g;
+bitmap{ filename = "sch3b.bmp";} bsch3b;
+bitmap{ filename = "sch3gr.bmp";} bsch3gr;
+bitmap{ filename = "sch4g.bmp";} bsch4g;
+bitmap{ filename = "sch4gr.bmp";} bsch4gr;
 
-bitmap{ filename = "options.bmp"} boptions;
+bitmap{ filename = "options.bmp";} boptions;
 
 # Every picture consists of the 4 options the participants can select and the stimulus they have to sort.
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb1g; x = 0; y = -300;} b1g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb1gr; x = 0; y = -300;} b1gr;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb2g; x = 0; y = -300;} b2g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb2r; x = 0; y = -300;} b2r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb3gr; x = 0; y = -300;} b3gr;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bb3r; x = 0; y = -300;} b3r;
 
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb1g; x = 0; y = -300;} b1g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb1gr; x = 0; y = -300;} b1gr;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb2g; x = 0; y = -300;} b2g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb2r; x = 0; y = -300;} b2r;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb3gr; x = 0; y = -300;} b3gr;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bb3r; x = 0; y = -300;} b3r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj1b; x = 0; y = -300;} j1b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj1g; x = 0; y = -300;} j1g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj3r; x = 0; y = -300;} j3r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj3b; x = 0; y = -300;} j3b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj4g; x = 0; y = -300;} j4g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bj4r; x = 0; y = -300;} j4r;
 
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj1b; x = 0; y = -300;} j1b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj1g; x = 0; y = -300;} j1g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj3r; x = 0; y = -300;} j3r;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj3b; x = 0; y = -300;} j3b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj4g; x = 0; y = -300;} j4g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bj4r; x = 0; y = -300;} j4r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs1b; x = 0; y = -300;} s1b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs1gr; x = 0; y = -300;} s1gr;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs2b; x = 0; y = -300;} s2b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs2r; x = 0; y = -300;} s2r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs4gr; x = 0; y = -300;} s4gr;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bs4r; x = 0; y = -300;} s4r;
 
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs1b; x = 0; y = -300;} s1b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs1gr; x = 0; y = -300;} s1gr;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs2b; x = 0; y = -300;} s2b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs2r; x = 0; y = -300;} s2r;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs4gr; x = 0; y = -300;} s4gr;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bs4r; x = 0; y = -300;} s4r;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2b; x = 0; y = -300;} sch2b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2g; x = 0; y = -300;} sch2g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3b; x = 0; y = -300;} sch3b;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3gr; x = 0; y = -300;} sch3gr;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4g; x = 0; y = -300;} sch4g;
+	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4gr; x = 0; y = -300;} sch4gr;
 
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2b; x = 0; y = -300;} sch2b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2g; x = 0; y = -300;} sch2g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3b; x = 0; y = -300;} sch3b;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3gr; x = 0; y = -300;} sch3gr;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4g; x = 0; y = -300;} sch4g;
-picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4gt; x = 0; y = -300;} sch4gr;
 
 # Now that all stimuli have been put in a picture element next the feedback will be coded
 # I decided to go with auditory feedback. The feedback that a participant hears after giving a wrong answer is a buzzer
@@ -140,26 +142,24 @@ trial{
 	stimulus_event{
 		picture welc_pic;
 		time = 0;
-		duration = response;
 	} welcome_page;
 	stimulus_event{
 		picture inst1_pic;
 		delta_time = 0;
-		duration = response;
 	} instruction_page1;
 	stimulus_event{
 		picture inst2_pic;
 		delta_time = 0;
-		duration = response;
 	} instruction_page2;
 	stimulus_event{
 		picture inst3_pic;
 		delta_time = 0;
-		duration = response;
 	} instruction_page3;
-} start_screen;
+};
 
 #Correct and wrong sound trial. This needs to be made so we can call this trial everytime a correct or wrong answer is given
+# and the auditory feedback can be given.
+
 trial{
 	sound correct;
 	duration = 300;
@@ -170,21 +170,85 @@ trial{
 	duration = 300;
 	time = 0;
 	} wrong_t;
-	
-	
-trial{
+
+# Trials where the rule is match on background color
+trial {
 	correct_feedback = correct_t;
 	incorrect_feedback = wrong_t;
-	picture example;
-	response_active = true;
-	duration = response;
+	picture b1g;
 	target_button = 3;
-} first_trial;
+};
 
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture j1g;
+	target_button = 3;
+};
 
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture sch3b;
+	target_button = 4;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture b3gr;
+	target_button = 2;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture s2r;
+	target_button = 1;
+};
+
+# Rule is shape
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture sch4gr;
+	target_button = 1;
+	deltat = 0;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture s2b;
+	target_button = 3;
+	deltat = 0;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture b2g;
+	target_button = 4;
+	deltat = 0;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture j3b;
+	target_button = 2;
+	deltat = 0;
+};
+
+trial {
+	correct_feedback = correct_t;
+	incorrect_feedback = wrong_t;
+	picture j4r;
+	target_button = 2;
+	deltat = 0;
+};
 
 #PCL to control the flow of the experiment
-begin_pcl;
-	start_screen.present();
-	first_trial.present();
-	
+
+
+
