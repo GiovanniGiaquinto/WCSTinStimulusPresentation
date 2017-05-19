@@ -174,130 +174,471 @@ trial{
 
 # In the following section three arrays are made. Each array contains (for now) 5 trials for each rule. 
 # The trials are put in an array so that we can randomize the order the trials are presented in.
+
 # Trials where the rule is match on background color
 array{
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture b1g;
-	target_button = 3;
-};
 
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture j1g;
-	target_button = 3;
-};
+#Ball pictures
+	trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1g;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1gr;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2g;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2r;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3gr;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3r;
+		target_button = 1;
+	};
 
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture sch3b;
-	target_button = 4;
-};
+#Joint pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1b;
+		target_button = 4;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1g;
+		target_button = 3;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3b;
+		target_button = 4;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3r;
+		target_button = 1;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4g;
+		target_button = 3;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4r;
+		target_button = 1;
+	};
+	
+# Screw pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1b;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1gr;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2b;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2r;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4gr;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4r;
+		target_button = 1;
+	};		
 
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture b3gr;
-	target_button = 2;
-};
-
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture s2r;
-	target_button = 1;
-};
-}color_1;
+#Shoe pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2b;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2g;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3b;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3gr;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4g;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4gr;
+		target_button = 4;
+	};	
+}color;
 
 
 
 # Rule is shape
+
 array{
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture sch4gr;
-	target_button = 1;
-	deltat = 0;
-};
+#Ball pictures
+	trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1g;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1gr;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2g;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2r;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3gr;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3r;
+		target_button = 4;
+	};
 
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture s2b;
-	target_button = 3;
-	deltat = 0;
-};
+#Joint pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1b;
+		target_button = 2;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1g;
+		target_button = 2;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3b;
+		target_button = 2;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3r;
+		target_button = 2;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4g;
+		target_button = 2;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4r;
+		target_button = 2;
+	};
+	
+# Screw pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1b;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1gr;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2b;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2r;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4gr;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4r;
+		target_button = 3;
+	};		
 
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture b2g;
-	target_button = 4;
-	deltat = 0;
-};
-
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture j3b;
-	target_button = 2;
-	deltat = 0;
-};
-
-trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture j4r;
-	target_button = 2;
-	deltat = 0;
-};
-}shape_1;
+#Shoe pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2b;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2g;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3b;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3gr;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4g;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4gr;
+		target_button = 1;
+}shape;
 
 #Rule is number of objects
 array{
-	trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture s1b;
-	target_button = 1;
-	deltat = 0;
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1g;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b1gr;
+		target_button = 1;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2g;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b2r;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3gr;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture b3r;
+		target_button = 3;
+	};
+
+#Joint pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1b;
+		target_button = 1;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j1g;
+		target_button = 1;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3b;
+		target_button = 3;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j3r;
+		target_button = 3;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4g;
+		target_button = 4;
+	};
+			trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture j4r;
+		target_button = 4;
 	};
 	
-	trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture j4g;
-	target_button = 4;
-	deltat = 0;
+# Screw pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1b;
+		target_button = 1;
 	};
-	
-	trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture b3r;
-	target_button = 3;
-	deltat = 0;
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s1gr;
+		target_button = 1;
 	};
-	
-	trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture j4r;
-	target_button = 4;
-	deltat = 0;
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2b;
+		target_button = 2;
 	};
-	
-	trial {
-	correct_feedback = correct_t;
-	incorrect_feedback = wrong_t;
-	picture sch2b;
-	target_button = 2;
-	deltat = 0;
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s2r;
+		target_button = 2;
 	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4gr;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture s4r;
+		target_button = 4;
+	};		
+
+#Shoe pictures
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2b;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch2g;
+		target_button = 2;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3b;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch3gr;
+		target_button = 3;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4g;
+		target_button = 4;
+	};
+		trial {
+		correct_feedback = correct_t;
+		incorrect_feedback = wrong_t;
+		picture sch4gr;
+		target_button = 4;
 }number_1;
 
 
@@ -308,17 +649,21 @@ begin_pcl;
 start_screen.present();
 
 #Next for each rule 5 trials have been made. To minimize noise the trials within each rule are randomized using the .shuffle function
-color_1.shuffle();
+color.shuffle();
+shape_1.shuffle();
+number_1.shuffle();
 
 #A loop is then used to present all 5 trials within each array
 loop
 	int i = 1
 until
-	i > color_1.count()
+	i > 
 begin
-	color_1[i].present();
+	color[i].present();
 	i = i + 1;
 end;
+
+
 shape_1.shuffle();
 loop
 	int i = 1
