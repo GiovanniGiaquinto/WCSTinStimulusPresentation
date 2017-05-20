@@ -9,6 +9,10 @@ response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
 
+field_of_view = 20;
+front_clip_distance = 1;
+back_clip_distance = 100;
+
 
 #SDL
 begin;
@@ -92,37 +96,37 @@ bitmap{ filename = "sch4gr.bmp";} bsch4gr;
 bitmap{ filename = "options.bmp";} boptions;
 
 # Every picture consists of the 4 options the participants can select and the stimulus they have to sort.
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb1g; x = 0; y = -300;} b1g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb1gr; x = 0; y = -300;} b1gr;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb2g; x = 0; y = -300;} b2g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb2r; x = 0; y = -300;} b2r;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb3gr; x = 0; y = -300;} b3gr;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bb3r; x = 0; y = -300;} b3r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb1g; x = 0; y = -300;} b1g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb1gr; x = 0; y = -300;} b1gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb2g; x = 0; y = -300;} b2g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb2r; x = 0; y = -300;} b2r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb3gr; x = 0; y = -300;} b3gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bb3r; x = 0; y = -300;} b3r;
 
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj1b; x = 0; y = -300;} j1b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj1g; x = 0; y = -300;} j1g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj3r; x = 0; y = -300;} j3r;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj3b; x = 0; y = -300;} j3b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj4g; x = 0; y = -300;} j4g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bj4r; x = 0; y = -300;} j4r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj1b; x = 0; y = -300;} j1b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj1g; x = 0; y = -300;} j1g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj3r; x = 0; y = -300;} j3r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj3b; x = 0; y = -300;} j3b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj4g; x = 0; y = -300;} j4g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bj4r; x = 0; y = -300;} j4r;
 
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs1b; x = 0; y = -300;} s1b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs1gr; x = 0; y = -300;} s1gr;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs2b; x = 0; y = -300;} s2b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs2r; x = 0; y = -300;} s2r;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs4gr; x = 0; y = -300;} s4gr;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bs4r; x = 0; y = -300;} s4r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs1b; x = 0; y = -300;} s1b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs1gr; x = 0; y = -300;} s1gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs2b; x = 0; y = -300;} s2b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs2r; x = 0; y = -300;} s2r;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs4gr; x = 0; y = -300;} s4gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bs4r; x = 0; y = -300;} s4r;
 
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2b; x = 0; y = -300;} sch2b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2g; x = 0; y = -300;} sch2g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3b; x = 0; y = -300;} sch3b;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3gr; x = 0; y = -300;} sch3gr;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4g; x = 0; y = -300;} sch4g;
-	picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4gr; x = 0; y = -300;} sch4gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2b; x = 0; y = -300;} sch2b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch2g; x = 0; y = -300;} sch2g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3b; x = 0; y = -300;} sch3b;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch3gr; x = 0; y = -300;} sch3gr;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4g; x = 0; y = -300;} sch4g;
+picture{ bitmap boptions; x = 0; y = 300; bitmap bsch4gr; x = 0; y = -300;} sch4gr;
 
 
 # Now that all stimuli have been put in a picture element next the feedback will be coded
-# I decided to go with auditory feedback. The feedback that a participant hears after giving a wrong answer is a buzzer
+# I decided to go with only auditory feedback. The feedback that a participant hears after giving a wrong answer is a buzzer
 # When a correct answer is given the line 'You got it' will be played.
 
 #Wrong Answer Feedback
@@ -185,31 +189,31 @@ array{
 		picture b1g;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b1gr;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2g;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2r;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3gr;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3r;
@@ -217,37 +221,37 @@ array{
 	};
 
 #Joint pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1b;
 		target_button = 4;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1g;
 		target_button = 3;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3b;
 		target_button = 4;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3r;
 		target_button = 1;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4g;
 		target_button = 3;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4r;
@@ -255,37 +259,37 @@ array{
 	};
 	
 # Screw pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1b;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1gr;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2b;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2r;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4gr;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4r;
@@ -293,43 +297,43 @@ array{
 	};		
 
 #Shoe pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2b;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2g;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3b;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3gr;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4g;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4gr;
 		target_button = 4;
 	};	
-}color_1;
+}color;
 
 
 
@@ -343,31 +347,31 @@ array{
 		picture b1g;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b1gr;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2g;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2r;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3gr;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3r;
@@ -375,37 +379,37 @@ array{
 	};
 
 #Joint pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1b;
 		target_button = 2;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1g;
 		target_button = 2;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3b;
 		target_button = 2;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3r;
 		target_button = 2;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4g;
 		target_button = 2;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4r;
@@ -413,37 +417,37 @@ array{
 	};
 	
 # Screw pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1b;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1gr;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2b;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2r;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4gr;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4r;
@@ -451,76 +455,77 @@ array{
 	};		
 
 #Shoe pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2b;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2g;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3b;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3gr;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4g;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4gr;
 		target_button = 1;
-}shape_1;
+	};
+}shape;
 
 #Rule is number of objects
 array{
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b1g;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b1gr;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2g;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b2r;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3gr;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture b3r;
@@ -528,37 +533,37 @@ array{
 	};
 
 #Joint pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1b;
 		target_button = 1;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j1g;
 		target_button = 1;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3b;
 		target_button = 3;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j3r;
 		target_button = 3;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4g;
 		target_button = 4;
 	};
-			trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture j4r;
@@ -566,37 +571,37 @@ array{
 	};
 	
 # Screw pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1b;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s1gr;
 		target_button = 1;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2b;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s2r;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4gr;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture s4r;
@@ -604,43 +609,43 @@ array{
 	};		
 
 #Shoe pictures
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2b;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch2g;
 		target_button = 2;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3b;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch3gr;
 		target_button = 3;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4g;
 		target_button = 4;
 	};
-		trial {
+	trial {
 		correct_feedback = correct_t;
 		incorrect_feedback = wrong_t;
 		picture sch4gr;
 		target_button = 4;
 	};
-}number_1;
+}number;
 
 
 #Begin PCL to control flow of experiment
@@ -649,26 +654,43 @@ begin_pcl;
 #To begin the instruction screens need to be presented
 start_screen.present();
 
-#Next for each rule 5 trials have been made. To minimize noise the trials within each rule are randomized using the .shuffle function
-color_1.shuffle();
-shape_1.shuffle();
-number_1.shuffle();
+#Next for each rule trials have been made for all stimuli. To minimize noise the trials within each rule are randomized using the .shuffle function
+color.shuffle();
+shape.shuffle();
+number.shuffle();
 
-#A loop is then used to present all 5 trials within each array
+# Using a loop and a nested conditional we can use one piece of code to present trials from the three different arrays.
 loop
 	int i = 1
 until
-	i > color_1.count();
+	i > 15
+
 begin
 	if i < 6 then
-		color_1[i].present();
+		color[i].present();
 	elseif i > 5 && i < 11 then
-		shape_1[i].present();
-	elseif i > 11 && i < 16 then
-		number_1[i].present();
+		shape[i].present();
+	elseif i > 11 then
+		number[i].present();
+	end;
 	i = i + 1;
 end;
 
 
+#Now a new array will be made with 72 trials. These trials will use the random stimulus order that was created above.
+array <trial> WCST [0];
+
+WCST.add color[i]
+WCST.add shape[i]
+WCST.add number[i]
+wCST.add shape[i]
+WCST.add number[i]
+WCST.add color[i]
+WCST.add shape[i]
+WCST.add color[i]
+WCST.add number[i]
+WCST.add shape[i]
+WCST.add color[i]
+WCST.add number[i]
 
 
