@@ -659,38 +659,61 @@ color.shuffle();
 shape.shuffle();
 number.shuffle();
 
-# Using a loop and a nested conditional we can use one piece of code to present trials from the three different arrays.
-loop
-	int i = 1
-until
-	i > 15
-
+loop int i=1 until i > 24
 begin
-	if i < 6 then
+	if i < 5 then
 		color[i].present();
-	elseif i > 5 && i < 11 then
+	elseif i >4 && i < 9 then
 		shape[i].present();
-	elseif i > 11 then
+	elseif i > 8 && i < 13 then
+		number[i].present();
+	elseif i > 12 && i < 17 then
+		shape[i].present();
+	elseif i > 16 && i < 21 then
+		color[i].present();
+	elseif i > 20 then
 		number[i].present();
 	end;
-	i = i + 1;
+	i = i + 1
 end;
 
+color.shuffle();
+shape.shuffle();
+number.shuffle();
 
-#Now a new array will be made with 72 trials. These trials will use the random stimulus order that was created above.
-array <trial> WCST [0];
+loop int j=1 until j > 24
+begin
+	if j < 5 then
+		color[j].present();
+	elseif j >4 && j < 9 then
+		number[j].present();
+	elseif j > 8 && j < 13 then
+		shape[j].present();
+	elseif j > 12 && j < 17 then
+		number[j].present();
+	elseif j > 16 && j < 21 then
+		shape[j].present();
+	elseif j > 20 then
+		number[j].present();
+	end;
+	j = j + 1
+end;
 
-WCST.add color[i]
-WCST.add shape[i]
-WCST.add number[i]
-wCST.add shape[i]
-WCST.add number[i]
-WCST.add color[i]
-WCST.add shape[i]
-WCST.add color[i]
-WCST.add number[i]
-WCST.add shape[i]
-WCST.add color[i]
-WCST.add number[i]
+color.shuffle();
+shape.shuffle();
+number.shuffle();
 
+loop int k=1 until k > 16
+begin
+	if k < 5 then
+		color[k].present();
+	elseif k > 4 && k < 9 then
+		shape[k].present();
+	elseif k > 8 && k < 13 then
+		number[k].present();
+	elseif k > 12 && k < 17 then
+		shape[k].present();
+	end;
+	k = k + 1;
+end;
 

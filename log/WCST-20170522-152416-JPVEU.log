@@ -1,0 +1,88 @@
+Scenario - 
+Logfile written - 05/22/2017 15:26:24
+
+Trial	Event Type	Code	Time	TTime	Uncertainty	Duration	Uncertainty	ReqTime	ReqDur	Stim Type	Pair Index
+
+1	Response	5	5513	5346	0
+1	Response	5	8736	8569	0
+1	Response	5	16005	15838	0
+1	Response	5	21571	21404	1
+2	Response	3	66710	44881	0
+3	Response	3	87060	11074	0
+4	Response	4	102033	6550	0
+5	Response	4	116431	7284	0
+6	Response	2	136978	13334	0
+7	Response	4	152524	8383	0
+8	Response	4	167342	7704	0
+9	Response	3	187258	12790	0
+10	Response	3	211102	15471	1
+11	Response	2	225439	7313	0
+12	Response	2	238502	5878	1
+13	Response	2	252820	7198	0
+14	Response	2	265867	5915	0
+15	Response	3	284385	10102	0
+16	Response	3	298418	6971	0
+17	Response	3	309990	4379	0
+18	Response	4	331790	14681	0
+19	Response	4	356215	16110	1
+20	Response	2	385851	22417	0
+21	Response	3	402794	8532	0
+22	Response	4	418114	6855	0
+23	Response	4	444715	18126	0
+24	Response	3	466200	14282	0
+25	Response	2	481900	8486	0
+26	Response	2	498346	9268	1
+27	Response	2	514771	8030	1
+28	Response	1	527839	5934	0
+29	Response	2	542869	7966	1
+30	Response	1	567392	16159	0
+31	Response	2	580542	5980	0
+32	Response	1	594404	6678	0
+33	Response	3	615856	14299	0
+34	Response	2	631837	8950	0
+35	Response	3	667445	27228	0
+36	Response	1	696376	20499	0
+37	Response	4	711279	7740	0
+38	Response	3	726194	7825	0
+39	Response	2	748081	13381	1
+40	Response	3	777657	21129	0
+41	Response	1	794304	8114	0
+42	Response	2	809823	8302	1
+43	Response	1	826316	8132	1
+44	Response	4	843551	8870	0
+45	Response	2	861524	9513	0
+46	Response	3	876670	6661	0
+47	Response	3	903610	18438	0
+48	Response	4	920456	8456	0
+49	Response	1	936196	8532	0
+50	Response	2	951618	6957	0
+51	Response	2	971770	11778	0
+52	Response	1	986989	6834	0
+53	Response	2	1010549	16396	0
+54	Response	2	1029638	11990	0
+55	Response	3	1053643	15499	0
+56	Response	4	1067042	6235	0
+57	Response	2	1081198	7060	1
+58	Response	3	1093801	5499	0
+59	Response	1	1123041	20908	1
+60	Response	3	1140744	9283	1
+61	Response	2	1160241	12283	1
+62	Response	3	1175769	7149	0
+63	Response	1	1200295	17343	1
+64	Response	4	1231648	22868	0
+65	Response	2	1251413	11305	0
+
+
+{
+   "app": "Presentation Version 19.0 Build 11.14.16",
+   "device": "Dell Inc. Latitude E5570",
+   "experiment": "{FE5DB8A7-8958-48BB-B52B-BD0E7BB5FCF0}",
+   "os": "Windows 7 64 bit",
+   "package": "",
+   "parameters": {
+      "configuration": "Default configuration"
+   },
+   "scenario": "WCST.sce",
+   "subject": "",
+   "timestamp": "2017/05/22 13:24:16 GMT"
+}
