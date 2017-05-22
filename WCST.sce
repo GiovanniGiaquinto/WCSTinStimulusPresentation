@@ -174,7 +174,7 @@ trial{
 	sound wrong;
 	duration = 300;
 	time = 0;
-	} wrong_t;
+} wrong_t;
 
 # In the following section three arrays are made. Each array contains (for now) 5 trials for each rule. 
 # The trials are put in an array so that we can randomize the order the trials are presented in.
@@ -654,66 +654,35 @@ begin_pcl;
 #To begin the instruction screens need to be presented
 start_screen.present();
 
+loop int j = 1 until j > 3
+begin
+		
 #Next for each rule trials have been made for all stimuli. To minimize noise the trials within each rule are randomized using the .shuffle function
-color.shuffle();
-shape.shuffle();
-number.shuffle();
+	color.shuffle();
+	shape.shuffle();
+	number.shuffle();
 
-loop int i=1 until i > 24
-begin
-	if i < 5 then
-		color[i].present();
-	elseif i >4 && i < 9 then
-		shape[i].present();
-	elseif i > 8 && i < 13 then
-		number[i].present();
-	elseif i > 12 && i < 17 then
-		shape[i].present();
-	elseif i > 16 && i < 21 then
-		color[i].present();
-	elseif i > 20 then
-		number[i].present();
-	end;
-	i = i + 1
-end;
-
-color.shuffle();
-shape.shuffle();
-number.shuffle();
-
-loop int j=1 until j > 24
-begin
-	if j < 5 then
-		color[j].present();
-	elseif j >4 && j < 9 then
-		number[j].present();
-	elseif j > 8 && j < 13 then
-		shape[j].present();
-	elseif j > 12 && j < 17 then
-		number[j].present();
-	elseif j > 16 && j < 21 then
-		shape[j].present();
-	elseif j > 20 then
-		number[j].present();
+# Using a loop we will present 4 stimuli for a rule until moving on to the next rule
+# I use until i > 24 because there are a total of 24 stimuli in each rule array. Going further than that would
+# result in an error.
+# This is the same reason why the loop is repeated three times
+	loop int i=1 until i > 24
+	begin
+		if i < 5 then
+			color[i].present();
+		elseif i >4 && i < 9 then
+			shape[i].present();
+		elseif i > 8 && i < 13 then
+			number[i].present();
+		elseif i > 12 && i < 17 then
+			shape[i].present();
+		elseif i > 16 && i < 21 then
+			color[i].present();
+		elseif i > 20 then
+			number[i].present();
+		end;
+		i = i + 1
 	end;
 	j = j + 1
-end;
-
-color.shuffle();
-shape.shuffle();
-number.shuffle();
-
-loop int k=1 until k > 16
-begin
-	if k < 5 then
-		color[k].present();
-	elseif k > 4 && k < 9 then
-		shape[k].present();
-	elseif k > 8 && k < 13 then
-		number[k].present();
-	elseif k > 12 && k < 17 then
-		shape[k].present();
-	end;
-	k = k + 1;
 end;
 
