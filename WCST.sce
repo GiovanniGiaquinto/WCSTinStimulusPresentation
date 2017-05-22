@@ -651,21 +651,30 @@ array{
 #Begin PCL to control flow of experiment
 begin_pcl;
 
+int lastresponse;
+stimulus_data last;
+
+output_file wcst = new output_file;
+wcst.open (logfile.subject() + "wcst_data.txt");
+wcst.print("trialnr\tresponse\tjuist\treactiontime\n");
+
 #To begin the instruction screens need to be presented
 start_screen.present();
-
-loop int j = 1 until j > 3
-begin
-		
-#Next for each rule trials have been made for all stimuli. To minimize noise the trials within each rule are randomized using the .shuffle function
-	color.shuffle();
-	shape.shuffle();
-	number.shuffle();
 
 # Using a loop we will present 4 stimuli for a rule until moving on to the next rule
 # I use until i > 24 because there are a total of 24 stimuli in each rule array. Going further than that would
 # result in an error.
-# This is the same reason why the loop is repeated three times
+# This loop is repeated three times using the loop that contains all code underneath in order to present a total of 72 trials
+
+loop int j = 1 until j > 1
+begin
+		
+#Next for each rule trials have been made for all stimuli. To minimize noise the trials within each rule are
+#randomized using the .shuffle function before going through the next loop
+	color.shuffle();
+	shape.shuffle();
+	number.shuffle();
+
 	loop int i=1 until i > 24
 	begin
 		if i < 5 then
@@ -681,8 +690,18 @@ begin
 		elseif i > 20 then
 			number[i].present();
 		end;
+		last = stimulus_manager.last_stimulus_data();
+		lastresponse = last.button();
+		
+		
+		wcst.print(i); wcst.print("\t");
+		wcst.print(lastresponse); wcst.print("\t");
+		wcst.print(response_manager.total_hits());wcst.print("\t");
+		wcst.print(last.reaction_time());wcst.print("\n");
 		i = i + 1
 	end;
-	j = j + 1
+	j = j + 1;
 end;
+
+
 

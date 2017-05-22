@@ -1,0 +1,32 @@
+Scenario - 
+Logfile written - 05/22/2017 18:13:18
+
+Trial	Event Type	Code	Time	TTime	Uncertainty	Duration	Uncertainty	ReqTime	ReqDur	Stim Type	Pair Index
+
+1	Response	5	2395	2229	1
+1	Response	5	5793	5626	0
+1	Response	5	9688	9522	0
+1	Response	5	13513	13346	1
+2	Response	2	34064	20233	0
+3	Response	3	50748	9422	1
+4	Response	4	62024	4201	0
+5	Response	2	74484	5330	0
+6	Response	2	88342	6690	0
+7	Response	3	106394	9578	1
+8	Response	3	125839	11027	0
+9	Quit		140179	7204	NA
+
+
+{
+   "app": "Presentation Version 19.0 Build 11.14.16",
+   "device": "Dell Inc. Latitude E5570",
+   "experiment": "{FE5DB8A7-8958-48BB-B52B-BD0E7BB5FCF0}",
+   "os": "Windows 7 64 bit",
+   "package": "",
+   "parameters": {
+      "configuration": "Default configuration"
+   },
+   "scenario": "WCST.sce",
+   "subject": "",
+   "timestamp": "2017/05/22 16:13:02 GMT"
+}
