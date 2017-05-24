@@ -119,7 +119,7 @@
 <set_def_file></set_def_file>
 <stimulus_list>0</stimulus_list>
 <subject_id></subject_id>
-<subject_id_pol>0</subject_id_pol>
+<subject_id_pol>1</subject_id_pol>
 <video_list>0</video_list>
 <warnings>1</warnings>
 </log>
