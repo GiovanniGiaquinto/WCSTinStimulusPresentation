@@ -65,39 +65,67 @@ picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap
 
 # Coding of all stimuli
 array{
-	bitmap{ filename = "b1g.bmp";} bb1g;
-	bitmap{ filename = "b1gr.bmp";} bb1gr;
-	bitmap{ filename = "b2g.bmp";} bb2g;
-	bitmap{ filename = "b2r.bmp";} bb2r;
-	bitmap{ filename = "b3gr.bmp";} bb3gr;
-	bitmap{ filename = "b3r.bmp";} bb3r;
+	bitmap{ filename = "b1g.bmp";}first;
+	bitmap{ filename = "b1gr.bmp";};
+	bitmap{ filename = "b2g.bmp";};
+	bitmap{ filename = "b2r.bmp";};
+	bitmap{ filename = "b3gr.bmp";};
+	bitmap{ filename = "b3r.bmp";};
 
-	bitmap{ filename = "j1b.bmp";} bj1b;
-	bitmap{ filename = "j1g.bmp";} bj1g;
-	bitmap{ filename = "j3r.bmp";} bj3r;
-	bitmap{ filename = "j3b.bmp";} bj3b;
-	bitmap{ filename = "j4g.bmp";} bj4g;
-	bitmap{ filename = "j4r.bmp";} bj4r;
+	bitmap{ filename = "j1b.bmp";};
+	bitmap{ filename = "j1g.bmp";};
+	bitmap{ filename = "j3r.bmp";};
+	bitmap{ filename = "j3b.bmp";};
+	bitmap{ filename = "j4g.bmp";};
+	bitmap{ filename = "j4r.bmp";};
 
-	bitmap{ filename = "s1b.bmp";} bs1b;
-	bitmap{ filename = "s1gr.bmp";} bs1gr;
-	bitmap{ filename = "s2b.bmp";} bs2b;
-	bitmap{ filename = "s2r.bmp";} bs2r;
-	bitmap{ filename = "s4gr.bmp";} bs4gr;
-	bitmap{ filename = "s4r.bmp";} bs4r;
+	bitmap{ filename = "s1b.bmp";};
+	bitmap{ filename = "s1gr.bmp";};
+	bitmap{ filename = "s2b.bmp";};
+	bitmap{ filename = "s2r.bmp";};
+	bitmap{ filename = "s4gr.bmp";};
+	bitmap{ filename = "s4r.bmp";};
 
-	bitmap{ filename = "sch2b.bmp";} bsch2b;
-	bitmap{ filename = "sch2g.bmp";} bsch2g;
-	bitmap{ filename = "sch3b.bmp";} bsch3b;
-	bitmap{ filename = "sch3gr.bmp";} bsch3gr;
-	bitmap{ filename = "sch4g.bmp";} bsch4g;
-	bitmap{ filename = "sch4gr.bmp";} bsch4gr;
-
-	bitmap{ filename = "options.bmp";} boptions;
+	bitmap{ filename = "sch2b.bmp";};
+	bitmap{ filename = "sch2g.bmp";};
+	bitmap{ filename = "sch3b.bmp";};
+	bitmap{ filename = "sch3gr.bmp";};
+	bitmap{ filename = "sch4g.bmp";};
+	bitmap{ filename = "sch4gr.bmp";};
 } stimuli;
 
+bitmap{ filename = "options.bmp";}options;
+
 text {caption = "O";} pointer;
+
+
 trial{
 	trial_type = first_response;
 	trial_duration = stimuli_length;
-	picture
+	stimulus_event{
+		picture{
+			bitmap first;
+			x = 0; y = -300;
+			bitmap options;
+			x = 0 ; y = 300;
+			text pointer;
+			x = 0; y = 0;
+		} pics;
+	}event;
+}main_trial;
+
+begin_pcl;
+
+stimuli.shuffle();
+
+loop int j = 1 until j > 3 begin
+	loop int i = 1 until i > 24 begin
+		pics.set_part (1, stimuli[i]);
+		event.set_event_code( stimuli[i].description() );
+		main_trial.present();
+		i = i + 1;
+	end;
+	j = j + 1
+end;
+	
+	
