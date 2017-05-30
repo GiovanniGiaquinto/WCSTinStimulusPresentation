@@ -4,7 +4,7 @@ default_text_color = 0, 0, 0;
 default_font = "cambria";
 default_font_size = 28;
 
-active_buttons = 5;
+active_buttons = 4;
 response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
@@ -22,8 +22,9 @@ begin;
 # This makes the scenario clearer. Each subsection will have a comment header to indicate what part is being coded
 
 # Welcome Page
-text{caption = "Welcome to this experiment, and thank you for your participation
-					press the spacebar to go to the instruction screen";} welc_text;
+text{caption = "Welcome to this experiment, and thank you for your participation!
+
+					Press the W-button to go to the instruction screen";} welc_text;
 					
 picture{text welc_text; x = 0; y = 0;} welc_pic;
 
@@ -34,7 +35,7 @@ text{caption = "In this task, you need to match a card to one of four cards pres
 					get feedback. If your match was not correct, you need to try a different rule
 
 
-					Press the spacebar to go to the next screen";} inst1_text;
+					Press the W-button to go to the next screen";} inst1_text;
 
 text{ caption = "The three possible rules of matching are that the cards have the same backgroundcolor,
 					the cards have the same number of objects on the card, or the object on the cards is the same.
@@ -42,7 +43,7 @@ text{ caption = "The three possible rules of matching are that the cards have th
 					If you match according to backgroundcolor, you would choose card 3 corresponding to the letter U
 					If you match according to object, you would choose card 4 corresponding to the letter P
 					If you match according to number of objects, you would choose card 1 corresponding to the letter W
-					Press the spacebar to go to the next screen";} inst2_text;
+					Press the W-button to go to the next screen";} inst2_text;
 
 text{ caption = "
 					You will need to find out whether to match according to color,
@@ -50,6 +51,8 @@ text{ caption = "
 					you can relax for a while. But that is not all. The matching rules changes now and then!
 					You therefore need to carefully monitor the feedback. Mistakes are inevitable,
 					but try to make as few mistakes as possible. That is all! Good luck!
+					
+					Press the W-button to start the experiment
 					";} inst3_text;
 					
 
@@ -140,6 +143,7 @@ sound{ wavefile {filename = "correct_sound.wav"; }; } correct;
 
 
 #Welcome page & Instruction Page trials
+#Delta_time is set to 0 because the screen only has to change when the participant presses a button
 trial{
 	trial_type = fixed;
 	trial_duration = stimuli_length;
@@ -176,7 +180,7 @@ trial{
 	time = 0;
 } wrong_t;
 
-# In the following section three arrays are made. Each array contains (for now) 5 trials for each rule. 
+# In the following section three arrays are made. Each array contains 24 trials (one for each stimulus) for each rule. 
 # The trials are put in an array so that we can randomize the order the trials are presented in.
 
 # Trials where the rule is match on background color
@@ -651,12 +655,16 @@ array{
 #Begin PCL to control flow of experiment
 begin_pcl;
 
+# These two objects are created in order to get a more informative output file 
 int lastresponse;
 stimulus_data last;
+int goodanswers;
+double percentagemistakes;
 
+#This creates a custom output file
 output_file wcst = new output_file;
 wcst.open (logfile.subject() + "wcst_data.txt");
-wcst.print("trialnr\tresponse\tjuist\treactiontime\n");
+wcst.print("trialnr\tresponse\ttotalcorrect\treactiontime\tpercentagemistakes\n");
 
 #To begin the instruction screens need to be presented
 start_screen.present();
@@ -666,7 +674,7 @@ start_screen.present();
 # result in an error.
 # This loop is repeated three times using the loop that contains all code underneath in order to present a total of 72 trials
 
-loop int j = 1 until j > 1
+loop int j = 1 until j > 3
 begin
 		
 #Next for each rule trials have been made for all stimuli. To minimize noise the trials within each rule are
@@ -690,18 +698,20 @@ begin
 		elseif i > 20 then
 			number[i].present();
 		end;
+		# The following lines of code are used to put results in the custom output file
 		last = stimulus_manager.last_stimulus_data();
 		lastresponse = last.button();
-		
+		goodanswers = response_manager.total_hits();
+		percentagemistakes = (goodanswers/72.0)*100.0;
 		
 		wcst.print(i); wcst.print("\t");
 		wcst.print(lastresponse); wcst.print("\t");
 		wcst.print(response_manager.total_hits());wcst.print("\t");
-		wcst.print(last.reaction_time());wcst.print("\n");
+		wcst.print(last.reaction_time());wcst.print("\t");;
+		wcst.print(percentagemistakes);wcst.print("\n");
 		i = i + 1
 	end;
 	j = j + 1;
 end;
-
 
 

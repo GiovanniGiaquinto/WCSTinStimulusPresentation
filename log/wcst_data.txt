@@ -1,5 +1,0 @@
-trialnr	response	juist	reactiontime
-1	1	1	2026
-2	1	1	1141
-3	2	2	701
-4	2	2	1295
