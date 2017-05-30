@@ -655,10 +655,10 @@ array{
 #Begin PCL to control flow of experiment
 begin_pcl;
 
+
 # These two objects are created in order to get a more informative output file 
 int lastresponse;
 stimulus_data last;
-int goodanswers;
 double percentagemistakes;
 
 #This creates a custom output file
@@ -701,8 +701,7 @@ begin
 		# The following lines of code are used to put results in the custom output file
 		last = stimulus_manager.last_stimulus_data();
 		lastresponse = last.button();
-		goodanswers = response_manager.total_hits();
-		percentagemistakes = (goodanswers/72.0)*100.0;
+		percentagemistakes = (response_manager.total_hits()/72.0)*100.0;
 		
 		wcst.print(i); wcst.print("\t");
 		wcst.print(lastresponse); wcst.print("\t");

@@ -4,7 +4,7 @@ default_text_color = 0, 0, 0;
 default_font = "cambria";
 default_font_size = 28;
 
-active_buttons = 5;
+active_buttons = 1;
 response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
@@ -96,21 +96,22 @@ array{
 
 bitmap{ filename = "options.bmp";}options;
 
-text {caption = "O";} pointer;
+text {caption = "+";} pointer;
 
+picture{
+	bitmap first;
+	x = 0; y = -300;
+	bitmap options;
+	x = 0 ; y = 300;
+	text pointer;
+	x = 0; y = 0;
+} pics;
 
 trial{
 	trial_type = first_response;
 	trial_duration = stimuli_length;
-	stimulus_event{
-		picture{
-			bitmap first;
-			x = 0; y = -300;
-			bitmap options;
-			x = 0 ; y = 300;
-			text pointer;
-			x = 0; y = 0;
-		} pics;
+		stimulus_event{
+			picture pics;
 	}event;
 }main_trial;
 
@@ -118,14 +119,37 @@ begin_pcl;
 
 stimuli.shuffle();
 
-loop int j = 1 until j > 3 begin
-	loop int i = 1 until i > 24 begin
+mouse mse = response_manager.get_mouse( 1 );
+int max_x = display_device.width() / 2;
+int min_x = -max_x;
+int max_y = display_device.height() / 2;
+int min_y = -max_y;
+mse.set_min_max( 1, min_x, max_x );
+mse.set_min_max( 2, min_y, max_y );
+mse.set_restricted( 1, true );
+mse.set_restricted( 2, true );
+
+
+sub get_location begin
+	loop int i = 1 until i > 24 begin;
 		pics.set_part (1, stimuli[i]);
+		pics.set_part_x(3, 0);
+		pics.set_part_y(3, 0);
 		event.set_event_code( stimuli[i].description() );
 		main_trial.present();
+		mse.poll();
+		mse.set_xy( 0,0);
+		loop int count = response_manager.total_response_count(1) until response_manager.total_response_count(1) > count begin
+			mse.poll();
+			pics.set_part_x(3, mse.x());
+			pics.set_part_y(3, mse.y());
+			pics.present()
+		end;
 		i = i + 1;
 	end;
-	j = j + 1
-end;
-	
-	
+end;	
+
+loop int j = 1 until j > 3 begin
+	get_location();
+	j = j + 1;
+end
