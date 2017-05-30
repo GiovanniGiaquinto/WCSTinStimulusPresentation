@@ -9,10 +9,6 @@ response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
 
-field_of_view = 20;
-front_clip_distance = 1;
-back_clip_distance = 100;
-
 
 #SDL
 begin;
@@ -664,7 +660,7 @@ double percentagemistakes;
 #This creates a custom output file
 output_file wcst = new output_file;
 wcst.open (logfile.subject() + "wcst_data.txt");
-wcst.print("trialnr\tstimulusname\tresponse\ttotalcorrect\treactiontime\tpercentagemistakes\n");
+wcst.print("trialnr\tresponse\ttotalcorrect\treactiontime\tpercentagemistakes\n");
 
 #To begin the instruction screens need to be presented
 start_screen.present();
@@ -704,7 +700,6 @@ begin
 		percentagemistakes = (response_manager.total_hits()/72.0)*100.0;
 		
 		wcst.print(i); wcst.print("\t");
-		wcst.print(color[i].filename();
 		wcst.print(lastresponse); wcst.print("\t");
 		wcst.print(response_manager.total_hits());wcst.print("\t");
 		wcst.print(last.reaction_time());wcst.print("\t");;
