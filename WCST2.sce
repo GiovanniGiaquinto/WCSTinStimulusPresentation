@@ -7,11 +7,8 @@ default_font_size = 28;
 active_buttons = 1;
 response_matching = simple_matching;
 default_trial_type = first_response;
+default_trial_duration = stimuli_length;
 default_picture_duration = response;
-
-field_of_view = 20;
-front_clip_distance = 1;
-back_clip_distance = 100;
 
 
 #SDL
@@ -23,7 +20,7 @@ begin;
 
 # Welcome Page
 text{caption = "Welcome to this experiment, and thank you for your participation
-					press the spacebar to go to the instruction screen";} welc_text;
+					Click the mouse to go to the next screen to go to the instruction screen";} welc_text;
 					
 picture{text welc_text; x = 0; y = 0;} welc_pic;
 
@@ -34,15 +31,15 @@ text{caption = "In this task, you need to match a card to one of four cards pres
 					get feedback. If your match was not correct, you need to try a different rule
 
 
-					Press the spacebar to go to the next screen";} inst1_text;
+					Click the mouse to go to the next screen";} inst1_text;
 
 text{ caption = "The three possible rules of matching are that the cards have the same backgroundcolor,
 					the cards have the same number of objects on the card, or the object on the cards is the same.
 					Look at the example below:
-					If you match according to backgroundcolor, you would choose card 3 corresponding to the letter U
-					If you match according to object, you would choose card 4 corresponding to the letter P
-					If you match according to number of objects, you would choose card 1 corresponding to the letter W
-					Press the spacebar to go to the next screen";} inst2_text;
+					If you match according to backgroundcolor, you would choose card 3
+					If you match according to object, you would choose card 4
+					If you match according to number of objects, you would choose card 1
+					Click the mouse to go to the next screen";} inst2_text;
 
 text{ caption = "
 					You will need to find out whether to match according to color,
@@ -50,17 +47,45 @@ text{ caption = "
 					you can relax for a while. But that is not all. The matching rules changes now and then!
 					You therefore need to carefully monitor the feedback. Mistakes are inevitable,
 					but try to make as few mistakes as possible. That is all! Good luck!
-					";} inst3_text;
+					
+
+					Click the mouse to go to the next screen";} inst3_text;
 					
 
 
 picture{ text inst1_text; x = 0; y = 0;} inst1_pic;
 picture{ text inst3_text; x = 0; y = 0;} inst3_pic;
 
+
+
 #instruction page example of experiment
 bitmap{ filename = "options.bmp";} qoptions;
 bitmap{ filename = "b1g.bmp"; } qb1g;
 picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap qb1g; x = 0; y = -300; } inst2_pic;
+
+#This trial consists of all three instruction pages in order. The trial shall be named so we can give it a position using
+#PCL
+trial{
+	trial_type = fixed;
+	trial_duration = stimuli_length;
+	stimulus_event{
+		picture welc_pic;
+		time = 0;
+	} welcome_page;
+	stimulus_event{
+		picture inst1_pic;
+		delta_time = 0;
+	} instruction_page1;
+	stimulus_event{
+		picture inst2_pic;
+		delta_time = 0;
+	} instruction_page2;
+	stimulus_event{
+		picture inst3_pic;
+		delta_time = 0;
+	} instruction_page3;
+}start_screen;
+
 
 
 # Coding of all stimuli
@@ -108,16 +133,12 @@ picture{
 } pics;
 
 trial{
-	trial_type = first_response;
-	trial_duration = stimuli_length;
-		stimulus_event{
-			picture pics;
-	}event;
+	picture pics;
 }main_trial;
 
-begin_pcl;
 
-stimuli.shuffle();
+
+begin_pcl;
 
 mouse mse = response_manager.get_mouse( 1 );
 int max_x = display_device.width() / 2;
@@ -135,8 +156,7 @@ sub get_location begin
 		pics.set_part (1, stimuli[i]);
 		pics.set_part_x(3, 0);
 		pics.set_part_y(3, 0);
-		event.set_event_code( stimuli[i].description() );
-		main_trial.present();
+		pics.present();
 		mse.poll();
 		mse.set_xy( 0,0);
 		loop int count = response_manager.total_response_count(1) until response_manager.total_response_count(1) > count begin
@@ -149,7 +169,9 @@ sub get_location begin
 	end;
 end;	
 
+start_screen.present();
 loop int j = 1 until j > 3 begin
+	stimuli.shuffle();
 	get_location();
 	j = j + 1;
 end
