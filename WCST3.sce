@@ -9,10 +9,6 @@ response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
 
-field_of_view = 20;
-front_clip_distance = 1;
-back_clip_distance = 100;
-
 
 #SDL
 begin;
@@ -60,6 +56,9 @@ bitmap{ filename = "options.bmp";} qoptions;
 bitmap{ filename = "b1g.bmp"; } qb1g;
 picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap qb1g; x = 0; y = -300; } inst2_pic;
 
+#Next a trial is created for the instruction pages. Delta_time is set to zero so that the next page is presented
+#the moment the participant clicks the button. Moreover, the trial is named so it can be called for using PCL later on.
+
 trial{
 	trial_type = fixed;
 	trial_duration = stimuli_length;
@@ -81,9 +80,8 @@ trial{
 	} instruction_page3;
 }start_screen;
 
-# Coding of all stimuli
-
-
+# Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
+# Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
 	bitmap{ filename = "b1g.bmp";		description = "1";}first;
 	bitmap{ filename = "b1gr.bmp";	description = "2";};
@@ -114,16 +112,20 @@ array{
 	bitmap{ filename = "sch4gr.bmp";	description = "24";};
 } stimuli;
 
-bitmap{ filename = "options.bmp";}options;
+#This one is not placed in the array because it has to be presented on every page of the experiment
+bitmap{ filename = "options.bmp";}options; 
 
 #Wrong Answer Feedback both auditory and visually
 sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong_s;
 text{ caption ="WRONG!";}wrong_t;
 
-#Right Answer Feedback
+#Right Answer Feedback both auditory and visually
 sound{ wavefile {filename = "correct_sound.wav"; }; } correct_s;
 text { caption = "CORRECT!";} correct_t;
 
+#Trials are created presenting both the auditory and visual feedback at the same time. The trials are named so
+#they can be used in the actual experimental trial as feedback using the built-in
+#correct_feedback & incorrect_feedback functions.
 trial{
 	sound correct_s;
 	picture{
@@ -144,27 +146,39 @@ trial{
 	time = 0;
 } wrongfeedback;
 
-
+#This is the actual experimental trial. The trial uses the built-in functions correct_feedback & incorrect_feedback
+#in order to present the correct feedback based on the input that is given by the participant. The function target_button
+#is the button that should be pressed.
 trial{
-	trial_type = first_response;
 	trial_duration = stimuli_length;
-	stimulus_event{
-		picture{
-			bitmap first;
-			x = 0; y = -300;
-			bitmap options;
-			x = 0 ; y = 300;
-		} pics;
-	}event;
+	correct_feedback = correctfeedback;
+	incorrect_feedback = wrongfeedback;
+	picture{
+		bitmap first;
+		x = 0; y = -300;
+		bitmap options;
+		x = 0 ; y = 300;
+	} pics;
+	target_button = 1;
 }main_trial;
 
-
+#PCL
 begin_pcl;
 
+#An integer is created to store the converted descriptions that are given to the bitmaps (the stimuli). This will
+#be used to create the different rules (shape, number, color).
 int desc_int;
-loop int j = 1 until j > 3 begin
-	stimuli.shuffle();
-	loop int i = 1 until i > 24 begin
+
+#The first loop will be repeated three times, this is done in order to present a totla of 72 stimuli to the participant
+loop
+	int j = 1 until j > 3
+begin
+	stimuli.shuffle();#The stimuli order is randomized. This is placed within the loop so that the order of the stimuli
+							#is randomized three times.
+	loop
+		int i = 1 until i > 24 	#This loop is repeated 24 times. This is done because the array containing the stimuli contains 24 stimuli.
+										#The value of i is used to call an object in the array containing all bitmaps. Going beyond 24 would result in an error
+	begin
 		pics.set_part (1, stimuli[i]);
 		desc_int = int(stimuli[i].description());
 		main_trial.present();
