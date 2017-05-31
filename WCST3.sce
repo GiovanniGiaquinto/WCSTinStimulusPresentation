@@ -177,15 +177,17 @@ begin_pcl;
 #A string object is created to use later on to create the three sorting rules
 string fn;
 
-# These three objects are created and will be use later on to get a more informative custom output file 
+# These five objects are created and will be use later on to get a more informative custom output file 
 int lastresponse;
+int trialnum = 0;
+int reqresp = 0;
 stimulus_data last;
 double percentagemistakes;
 
 #This creates the custom output file
 output_file wcst = new output_file;
 wcst.open (logfile.subject() + "wcst_data.txt");
-wcst.print("trialnr\tresponse\ttotalcorrect\treactiontime\tpercentagemistakes\n");
+wcst.print("Trialnumber\tFilename\tResponse\tTotalCorrect\tReactiontime\tPercentagemistakes\n");
 
 #The following subroutine asks for the filename of a stimulus and removes the pathway that is given when the .filename function is used. 
 # This way only the actual filename remains, which later on will be used to create the three sorting rules.
@@ -219,7 +221,6 @@ begin
 					#The value of i is used to call an object in the array containing all bitmaps created in the SDL part. Going beyond 24 would result in an error
 	begin
 		pics.set_part (1, stimuli[i]); 			#This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
-		desc = int(stimuli[i].description()); 	#Here the string description of the stimuli are converted to integers, which will be used to create the sorting rules
 		fn = removepath(stimuli[i].filename());#Here the subroutine created above store the filename in the string object fn
 		string fc = fn.substring(1, 1);			#Using .substring the first letter of the filename stored in fn is called and stored in fc (first charachter)
 		string sc = fn.substring(2, 1);			#Using .substring the second letter of the filename stored in fn is called and stored in sc (second charachter)
@@ -301,13 +302,16 @@ begin
 		# The following lines of code are used to put results in the custom output file.
 		last = stimulus_manager.last_stimulus_data();
 		lastresponse = last.button();															#Store the last pressed button response in the object lastresponse
-		percentagemistakes = (response_manager.total_hits()/72.0)*100.0;			#This equation calculates the percentage of mistakes that is made 
+		percentagemistakes = (response_manager.total_incorrects()/72.0)*100.0;		#This equation calculates the percentage of mistakes that is made 
+		trialnum = trialnum+1;																	#This is used to count the amount of trials which can then be printed in the custom output
 		
-		wcst.print(i); wcst.print("\t");
-		wcst.print(lastresponse); wcst.print("\t");
-		wcst.print(response_manager.total_hits());wcst.print("\t");
-		wcst.print(last.reaction_time());wcst.print("\t");;
-		wcst.print(percentagemistakes);wcst.print("\n")
+		wcst.print(trialnum); wcst.print("\t");											#Actually prints trialnum in custom output and then puts in a tab
+		wcst.print(fc);wcst.print(sc);wcst.print(tc);wcst.print("\t");				#Print filename in custom output
+		wcst.print(lastresponse); wcst.print("\t");										#Prints response given in custom output
+		wcst.print(response_manager.total_hits());wcst.print("\t");					#Print total correct answers uptill that point in custom output
+		wcst.print(last.reaction_time());wcst.print("\t");								#Prints the Reactiontime for that response
+		wcst.print(percentagemistakes);wcst.print("\n");								#Prints the percantageof mistakes uptill that point
+		
 		i = i + 1;
 	end;
 	j = j + 1
