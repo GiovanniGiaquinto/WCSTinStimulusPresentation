@@ -18,8 +18,10 @@ begin;
 # This makes the scenario clearer. Each subsection will have a comment header to indicate what part is being coded
 
 # Welcome Page
-text{caption = "Welcome to this experiment, and thank you for your participation
-					press the spacebar to go to the instruction screen";} welc_text;
+text{caption = "Welcome to this experiment, and thank you for your participation!
+
+
+					Press the W-button to go to the instruction screen";} welc_text;
 					
 picture{text welc_text; x = 0; y = 0;} welc_pic;
 
@@ -27,8 +29,10 @@ picture{text welc_text; x = 0; y = 0;} welc_pic;
 text{caption = "In this task, you need to match a card to one of four cards presented at the top of the screen.
 					Press one of the four buttons corresponding to the letter next to the cards to select to 
 					which card you want to match the card at the bottom to. Following your selection, you will 
-					get feedback. If your match was not correct, you need to try a different rule
-					Press the spacebar to go to the next screen";} inst1_text;
+					get feedback. If your match was not correct, you need to try a different rule.
+					
+					
+					Press the W-button to go to the next screen";} inst1_text;
 
 text{ caption = "The three possible rules of matching are that the cards have the same backgroundcolor,
 					the cards have the same number of objects on the card, or the object on the cards is the same.
@@ -36,7 +40,9 @@ text{ caption = "The three possible rules of matching are that the cards have th
 					If you match according to backgroundcolor, you would choose card 3 corresponding to the letter U
 					If you match according to object, you would choose card 4 corresponding to the letter P
 					If you match according to number of objects, you would choose card 1 corresponding to the letter W
-					Press the spacebar to go to the next screen";} inst2_text;
+					
+					
+					Press the W-button to go to the next screen";} inst2_text;
 
 text{ caption = "
 					You will need to find out whether to match according to color,
@@ -44,6 +50,8 @@ text{ caption = "
 					you can relax for a while. But that is not all. The matching rules changes now and then!
 					You therefore need to carefully monitor the feedback. Mistakes are inevitable,
 					but try to make as few mistakes as possible. That is all! Good luck!
+					
+					Press the W-button to start the experiment!
 					";} inst3_text;
 					
 
@@ -166,65 +174,95 @@ trial{
 #PCL
 begin_pcl;
 
-#An integer is created to store the converted descriptions that are given to the bitmaps (the stimuli). This will
-#be used to create the different rules (shape, number). A string is created to use later on to create the color rule
-int desc;
+#A string object is created to use later on to create the three sorting rules
 string fn;
 
+# These three objects are created and will be use later on to get a more informative custom output file 
+int lastresponse;
+stimulus_data last;
+double percentagemistakes;
+
+#This creates the custom output file
+output_file wcst = new output_file;
+wcst.open (logfile.subject() + "wcst_data.txt");
+wcst.print("trialnr\tresponse\ttotalcorrect\treactiontime\tpercentagemistakes\n");
+
+#The following subroutine asks for the filename of a stimulus and removes the pathway that is given when the .filename function is used. 
+# This way only the actual filename remains, which later on will be used to create the three sorting rules.
 sub string removepath (string path_and_file) begin
 	int pathlength = stimulus_directory.count();
 	string file_no_path = path_and_file.substring(pathlength+1, path_and_file.count()-pathlength);
 	return file_no_path;
 end;
 
-#The first loop will be repeated three times, this is done in order to present a totla of 72 stimuli to the participant
+#######################################################################################################
+#																																		#
+#										Actual coding of Experimental flow													#
+#														starts here																	#
+#######################################################################################################
+
+#The experiment start with presenting the instruction screen. .present() is the built in function to present a trial
+start_screen.present();
+
+#The first loop will be repeated three times, this is done in order to present a total of 72 stimuli to the participant.
 loop
-	int j = 1 until j > 3
+	int j = 1 
+until 
+	j > 3
 begin
 	stimuli.shuffle();#The stimuli order is randomized. This is placed within the loop so that the order of the stimuli
 							#is randomized three times.
 	loop
-		int i = 1 until i > 24 	#This loop is repeated 24 times. This is done because the array containing the stimuli contains 24 stimuli.
-										#The value of i is used to call an object in the array containing all bitmaps. Going beyond 24 would result in an error
+		int i = 1 
+	until
+		i > 24 	#This loop is repeated 24 times. This is done because the array containing the stimuli contains 24 stimuli.
+					#The value of i is used to call an object in the array containing all bitmaps created in the SDL part. Going beyond 24 would result in an error
 	begin
-		pics.set_part (1, stimuli[i]); # This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
-		desc = int(stimuli[i].description()); #Here the string description of the stimuli are converted to integers, which will be used to create the sorting rules
-		fn = removepath(stimuli[i].filename());
-		string fc = fn.substring(1, 1);
-		string sc = fn.substring(2, 1);
-		string tc = fn.substring(3, 1);
-		#An if then elseif statement is used to create the different rules. Using the value of i and the description given to the stimuli we can then set the correct target button
+		pics.set_part (1, stimuli[i]); 			#This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
+		desc = int(stimuli[i].description()); 	#Here the string description of the stimuli are converted to integers, which will be used to create the sorting rules
+		fn = removepath(stimuli[i].filename());#Here the subroutine created above store the filename in the string object fn
+		string fc = fn.substring(1, 1);			#Using .substring the first letter of the filename stored in fn is called and stored in fc (first charachter)
+		string sc = fn.substring(2, 1);			#Using .substring the second letter of the filename stored in fn is called and stored in sc (second charachter)
+		string tc = fn.substring(3, 1);			#Using .substring the third letter of the filename stored in fn is called and stored in tc (third character)
+		
+		#An if then elseif statement is used to create the different rules. 
+		#Using the value of i and the characters stored in fc, sc, and tc, we can create the rules
 		#for each stimulus.
+		# The first rule is the color rule. After 4 stimuli the rule changes. A nested if else statement
+		# is used to keep the code more readable. Moreover, the amount of code is also reduced by doing so.
 		if i < 5 then
-			if tc == "r" then
+			if tc == "r" then								#If color is red then
 				main_event.set_target_button(1);
-			elseif tc == "g" then
+			elseif tc == "g" then						#If color is green then
 				main_event.set_target_button(2);
-			elseif tc == "y" then
+			elseif tc == "y" then						#If color is yellow then
 				main_event.set_target_button(3);
-			elseif tc == "b" then
+			elseif tc == "b" then						#If color is blue then
 				main_event.set_target_button(4);
 			end;
+		#Next rule is implemented. This time its the shape rule.	
 		elseif i > 4 && i < 9 then
-			if fc == "c" then
+			if fc == "c" then								#If shape is shoe then
 				main_event.set_target_button(1);
-			elseif fc == "j" then
+			elseif fc == "j" then						#If shape is joint then
 				main_event.set_target_button(2);
-			elseif fc == "s" then
+			elseif fc == "s" then						#If shape is screw then
 				main_event.set_target_button(3);
-			elseif fc == "b" then
+			elseif fc == "b" then						#If shape is ball then
 				main_event.set_target_button(4);
 			end;
+		#Next rule is implemented. This time its the number rule
 		elseif i > 8 && i < 13 then
-			if sc == "1" then
+			if sc == "1" then								#If number is 1 then
 				main_event.set_target_button(1);
-			elseif sc == "2" then
+			elseif sc == "2" then						#If number is 2 then
 				main_event.set_target_button(2);
-			elseif sc == "3" then
+			elseif sc == "3" then						#If number is 3 then
 				main_event.set_target_button(3);
-			elseif sc == "4" then
+			elseif sc == "4" then						#If number is 4 then
 				main_event.set_target_button(4);
 			end;
+		#Shape Rule
 		elseif i > 12 && i < 17 then
 			if fc == "c" then
 				main_event.set_target_button(1);
@@ -235,6 +273,7 @@ begin
 			elseif fc == "b" then
 				main_event.set_target_button(4);
 			end;
+		#Color Rule
 		elseif i > 16 && i < 21 then
 			if tc == "r" then
 				main_event.set_target_button(1);
@@ -245,6 +284,7 @@ begin
 			elseif tc == "b" then
 				main_event.set_target_button(4);
 			end;
+		#Number Rule
 		elseif i > 20 then
 			if sc == "1" then
 				main_event.set_target_button(1);
@@ -256,8 +296,18 @@ begin
 				main_event.set_target_button(4);
 			end;			
 		end;
-		#This first set of if elseif then statements are used for the color rule. The statement concerning i is made so that after 4 stimuli the rule changes
+		#Now that the rules are in place the actual trial can be presented.
 		main_trial.present();
+		# The following lines of code are used to put results in the custom output file.
+		last = stimulus_manager.last_stimulus_data();
+		lastresponse = last.button();															#Store the last pressed button response in the object lastresponse
+		percentagemistakes = (response_manager.total_hits()/72.0)*100.0;			#This equation calculates the percentage of mistakes that is made 
+		
+		wcst.print(i); wcst.print("\t");
+		wcst.print(lastresponse); wcst.print("\t");
+		wcst.print(response_manager.total_hits());wcst.print("\t");
+		wcst.print(last.reaction_time());wcst.print("\t");;
+		wcst.print(percentagemistakes);wcst.print("\n")
 		i = i + 1;
 	end;
 	j = j + 1
