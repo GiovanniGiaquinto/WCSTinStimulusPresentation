@@ -9,10 +9,6 @@ response_matching = simple_matching;
 default_trial_type = first_response;
 default_picture_duration = response;
 
-field_of_view = 20;
-front_clip_distance = 1;
-back_clip_distance = 100;
-
 
 #SDL
 begin;
@@ -22,8 +18,10 @@ begin;
 # This makes the scenario clearer. Each subsection will have a comment header to indicate what part is being coded
 
 # Welcome Page
-text{caption = "Welcome to this experiment, and thank you for your participation
-					press the spacebar to go to the instruction screen";} welc_text;
+text{caption = "Welcome to this experiment, and thank you for your participation!
+
+
+					Press the W-button to go to the instruction screen";} welc_text;
 					
 picture{text welc_text; x = 0; y = 0;} welc_pic;
 
@@ -31,8 +29,10 @@ picture{text welc_text; x = 0; y = 0;} welc_pic;
 text{caption = "In this task, you need to match a card to one of four cards presented at the top of the screen.
 					Press one of the four buttons corresponding to the letter next to the cards to select to 
 					which card you want to match the card at the bottom to. Following your selection, you will 
-					get feedback. If your match was not correct, you need to try a different rule
-					Press the spacebar to go to the next screen";} inst1_text;
+					get feedback. If your match was not correct, you need to try a different rule.
+					
+					
+					Press the W-button to go to the next screen";} inst1_text;
 
 text{ caption = "The three possible rules of matching are that the cards have the same backgroundcolor,
 					the cards have the same number of objects on the card, or the object on the cards is the same.
@@ -40,7 +40,9 @@ text{ caption = "The three possible rules of matching are that the cards have th
 					If you match according to backgroundcolor, you would choose card 3 corresponding to the letter U
 					If you match according to object, you would choose card 4 corresponding to the letter P
 					If you match according to number of objects, you would choose card 1 corresponding to the letter W
-					Press the spacebar to go to the next screen";} inst2_text;
+					
+					
+					Press the W-button to go to the next screen";} inst2_text;
 
 text{ caption = "
 					You will need to find out whether to match according to color,
@@ -48,6 +50,8 @@ text{ caption = "
 					you can relax for a while. But that is not all. The matching rules changes now and then!
 					You therefore need to carefully monitor the feedback. Mistakes are inevitable,
 					but try to make as few mistakes as possible. That is all! Good luck!
+					
+					Press the W-button to start the experiment!
 					";} inst3_text;
 					
 
@@ -59,6 +63,9 @@ picture{ text inst3_text; x = 0; y = 0;} inst3_pic;
 bitmap{ filename = "options.bmp";} qoptions;
 bitmap{ filename = "b1g.bmp"; } qb1g;
 picture{ text inst2_text ; x = 0; y = 350; bitmap qoptions; x = 0; y = 0; bitmap qb1g; x = 0; y = -300; } inst2_pic;
+
+#Next a trial is created for the instruction pages. Delta_time is set to zero so that the next page is presented
+#the moment the participant clicks the button. Moreover, the trial is named so it can be called for using PCL later on.
 
 trial{
 	trial_type = fixed;
@@ -81,63 +88,79 @@ trial{
 	} instruction_page3;
 }start_screen;
 
-# Coding of all stimuli
-
-
+# Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
+# Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
-	bitmap{ filename = "b1g.bmp";		description = "1";}first;
-	bitmap{ filename = "b1gr.bmp";	description = "2";};
-	bitmap{ filename = "b2g.bmp";		description = "3";};
+	bitmap{ filename = "b1y.bmp";		description = "1";}first;
+	bitmap{ filename = "b1g.bmp";	description = "2";};
+	bitmap{ filename = "b2y.bmp";		description = "3";};
 	bitmap{ filename = "b2r.bmp";		description = "4";};
-	bitmap{ filename = "b3gr.bmp";	description = "5";};
+	bitmap{ filename = "b3g.bmp";	description = "5";};
 	bitmap{ filename = "b3r.bmp";		description = "6";};
 
 	bitmap{ filename = "j1b.bmp";		description = "7";};
-	bitmap{ filename = "j1g.bmp";		description = "8";};
+	bitmap{ filename = "j1y.bmp";		description = "8";};
 	bitmap{ filename = "j3r.bmp";		description = "9";};
 	bitmap{ filename = "j3b.bmp";		description = "10";};
-	bitmap{ filename = "j4g.bmp";		description = "11";};
+	bitmap{ filename = "j4y.bmp";		description = "11";};
 	bitmap{ filename = "j4r.bmp";		description = "12";};
 
 	bitmap{ filename = "s1b.bmp";		description = "13";};
-	bitmap{ filename = "s1gr.bmp";	description = "14";};
+	bitmap{ filename = "s1g.bmp";	description = "14";};
 	bitmap{ filename = "s2b.bmp";		description = "15";};
 	bitmap{ filename = "s2r.bmp";		description = "16";};
-	bitmap{ filename = "s4gr.bmp";	description = "17";};
+	bitmap{ filename = "s4g.bmp";	description = "17";};
 	bitmap{ filename = "s4r.bmp";		description = "18";};
 
-	bitmap{ filename = "sch2b.bmp";	description = "19";};
-	bitmap{ filename = "sch2g.bmp";	description = "20";};
-	bitmap{ filename = "sch3b.bmp";	description = "21";};
-	bitmap{ filename = "sch3gr.bmp";	description = "22";};
-	bitmap{ filename = "sch4g.bmp";	description = "23";};
-	bitmap{ filename = "sch4gr.bmp";	description = "24";};
+	bitmap{ filename = "c2b.bmp";	description = "19";};
+	bitmap{ filename = "c2y.bmp";	description = "20";};
+	bitmap{ filename = "c3b.bmp";	description = "21";};
+	bitmap{ filename = "c3g.bmp";	description = "22";};
+	bitmap{ filename = "c4y.bmp";	description = "23";};
+	bitmap{ filename = "c4g.bmp";	description = "24";};
 } stimuli;
 
-bitmap{ filename = "options.bmp";}options;
+#This one is not placed in the array because it has to be presented on every page of the experiment
+bitmap{ filename = "options.bmp";}options; 
 
-#Wrong Answer Feedback
-sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong;
+#Wrong Answer Feedback both auditory and visually
+sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong_s;
+text{ caption ="WRONG!";}wrong_t;
 
-#Right Answer Feedback
-sound{ wavefile {filename = "correct_sound.wav"; }; } correct;
+#Right Answer Feedback both auditory and visually
+sound{ wavefile {filename = "correct_sound.wav"; }; } correct_s;
+text { caption = "CORRECT!";} correct_t;
 
+#Trials are created presenting both the auditory and visual feedback at the same time. The trials are named so
+#they can be used in the actual experimental trial as feedback using the built-in
+#correct_feedback & incorrect_feedback functions.
 trial{
-	sound correct;
-	duration = 300;
+	sound correct_s;
+	picture{
+		text correct_t;
+		x = 0; y = 0;
+	};
+	duration = 600;
 	time = 0;
-} correct_t;
+} correctfeedback;
 	
 trial{
-	sound wrong;
-	duration = 300;
+	sound wrong_s;
+	picture{
+		text wrong_t;
+		x = 0; y = 0;
+	};
+	duration = 600;
 	time = 0;
-} wrong_t;
+} wrongfeedback;
 
-
+#This is the actual experimental trial. The trial uses the built-in functions correct_feedback & incorrect_feedback
+#in order to present the correct feedback based on the input that is given by the participant. The function target_button
+#is the button that should be pressed.
 trial{
-	trial_type = first_response;
 	trial_duration = stimuli_length;
+	correct_feedback = correctfeedback;
+	incorrect_feedback = wrongfeedback;
 	stimulus_event{
 		picture{
 			bitmap first;
@@ -145,19 +168,150 @@ trial{
 			bitmap options;
 			x = 0 ; y = 300;
 		} pics;
-	}event;
+	}main_event;	
 }main_trial;
 
-
+#PCL
 begin_pcl;
 
-int desc_int;
-loop int j = 1 until j > 3 begin
-	stimuli.shuffle();
-	loop int i = 1 until i > 24 begin
-		pics.set_part (1, stimuli[i]);
-		desc_int = int(stimuli[i].description());
+#A string object is created to use later on to create the three sorting rules
+string fn;
+
+# These five objects are created and will be use later on to get a more informative custom output file 
+int lastresponse;
+int trialnum = 0;
+int reqresp = 0;
+stimulus_data last;
+double percentagemistakes;
+
+#This creates the custom output file
+output_file wcst = new output_file;
+wcst.open (logfile.subject() + "wcst_data.txt");
+wcst.print("Trialnumber\tFilename\tResponse\tTotalCorrect\tReactiontime\tPercentagemistakes\n");
+
+#The following subroutine asks for the filename of a stimulus and removes the pathway that is given when the .filename function is used. 
+# This way only the actual filename remains, which later on will be used to create the three sorting rules.
+sub string removepath (string path_and_file) begin
+	int pathlength = stimulus_directory.count();
+	string file_no_path = path_and_file.substring(pathlength+1, path_and_file.count()-pathlength);
+	return file_no_path;
+end;
+
+#######################################################################################################
+#																																		#
+#										Actual coding of Experimental flow													#
+#														starts here																	#
+#######################################################################################################
+
+#The experiment start with presenting the instruction screen. .present() is the built in function to present a trial
+start_screen.present();
+
+#The first loop will be repeated three times, this is done in order to present a total of 72 stimuli to the participant.
+loop
+	int j = 1 
+until 
+	j > 3
+begin
+	stimuli.shuffle();#The stimuli order is randomized. This is placed within the loop so that the order of the stimuli
+							#is randomized three times.
+	loop
+		int i = 1 
+	until
+		i > 24 	#This loop is repeated 24 times. This is done because the array containing the stimuli contains 24 stimuli.
+					#The value of i is used to call an object in the array containing all bitmaps created in the SDL part. Going beyond 24 would result in an error
+	begin
+		pics.set_part (1, stimuli[i]); 			#This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
+		fn = removepath(stimuli[i].filename());#Here the subroutine created above store the filename in the string object fn
+		string fc = fn.substring(1, 1);			#Using .substring the first letter of the filename stored in fn is called and stored in fc (first charachter)
+		string sc = fn.substring(2, 1);			#Using .substring the second letter of the filename stored in fn is called and stored in sc (second charachter)
+		string tc = fn.substring(3, 1);			#Using .substring the third letter of the filename stored in fn is called and stored in tc (third character)
+		
+		#An if then elseif statement is used to create the different rules. 
+		#Using the value of i and the characters stored in fc, sc, and tc, we can create the rules
+		#for each stimulus.
+		# The first rule is the color rule. After 4 stimuli the rule changes. A nested if else statement
+		# is used to keep the code more readable. Moreover, the amount of code is also reduced by doing so.
+		if i < 5 then
+			if tc == "r" then								#If color is red then
+				main_event.set_target_button(1);
+			elseif tc == "g" then						#If color is green then
+				main_event.set_target_button(2);
+			elseif tc == "y" then						#If color is yellow then
+				main_event.set_target_button(3);
+			elseif tc == "b" then						#If color is blue then
+				main_event.set_target_button(4);
+			end;
+		#Next rule is implemented. This time its the shape rule.	
+		elseif i > 4 && i < 9 then
+			if fc == "c" then								#If shape is shoe then
+				main_event.set_target_button(1);
+			elseif fc == "j" then						#If shape is joint then
+				main_event.set_target_button(2);
+			elseif fc == "s" then						#If shape is screw then
+				main_event.set_target_button(3);
+			elseif fc == "b" then						#If shape is ball then
+				main_event.set_target_button(4);
+			end;
+		#Next rule is implemented. This time its the number rule
+		elseif i > 8 && i < 13 then
+			if sc == "1" then								#If number is 1 then
+				main_event.set_target_button(1);
+			elseif sc == "2" then						#If number is 2 then
+				main_event.set_target_button(2);
+			elseif sc == "3" then						#If number is 3 then
+				main_event.set_target_button(3);
+			elseif sc == "4" then						#If number is 4 then
+				main_event.set_target_button(4);
+			end;
+		#Shape Rule
+		elseif i > 12 && i < 17 then
+			if fc == "c" then
+				main_event.set_target_button(1);
+			elseif fc == "j" then
+				main_event.set_target_button(2);
+			elseif fc == "s" then
+				main_event.set_target_button(3);
+			elseif fc == "b" then
+				main_event.set_target_button(4);
+			end;
+		#Color Rule
+		elseif i > 16 && i < 21 then
+			if tc == "r" then
+				main_event.set_target_button(1);
+			elseif tc == "g" then
+				main_event.set_target_button(2);
+			elseif tc == "y" then
+				main_event.set_target_button(3);
+			elseif tc == "b" then
+				main_event.set_target_button(4);
+			end;
+		#Number Rule
+		elseif i > 20 then
+			if sc == "1" then
+				main_event.set_target_button(1);
+			elseif sc == "2" then
+				main_event.set_target_button(2);
+			elseif sc == "3" then
+				main_event.set_target_button(3);
+			elseif sc == "4" then
+				main_event.set_target_button(4);
+			end;			
+		end;
+		#Now that the rules are in place the actual trial can be presented.
 		main_trial.present();
+		# The following lines of code are used to put results in the custom output file.
+		last = stimulus_manager.last_stimulus_data();
+		lastresponse = last.button();															#Store the last pressed button response in the object lastresponse
+		percentagemistakes = (response_manager.total_incorrects()/72.0)*100.0;		#This equation calculates the percentage of mistakes that is made 
+		trialnum = trialnum+1;																	#This is used to count the amount of trials which can then be printed in the custom output
+		
+		wcst.print(trialnum); wcst.print("\t");											#Actually prints trialnum in custom output and then puts in a tab
+		wcst.print(fc);wcst.print(sc);wcst.print(tc);wcst.print("\t");				#Print filename in custom output
+		wcst.print(lastresponse); wcst.print("\t");										#Prints response given in custom output
+		wcst.print(response_manager.total_hits());wcst.print("\t");					#Print total correct answers uptill that point in custom output
+		wcst.print(last.reaction_time());wcst.print("\t");								#Prints the Reactiontime for that response
+		wcst.print(percentagemistakes);wcst.print("\n");								#Prints the percantageof mistakes uptill that point
+		
 		i = i + 1;
 	end;
 	j = j + 1
