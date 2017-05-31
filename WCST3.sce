@@ -83,33 +83,33 @@ trial{
 # Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
 # Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
-	bitmap{ filename = "b1g.bmp";		description = "1";}first;
-	bitmap{ filename = "b1gr.bmp";	description = "2";};
-	bitmap{ filename = "b2g.bmp";		description = "3";};
+	bitmap{ filename = "b1y.bmp";		description = "1";}first;
+	bitmap{ filename = "b1g.bmp";	description = "2";};
+	bitmap{ filename = "b2y.bmp";		description = "3";};
 	bitmap{ filename = "b2r.bmp";		description = "4";};
-	bitmap{ filename = "b3gr.bmp";	description = "5";};
+	bitmap{ filename = "b3g.bmp";	description = "5";};
 	bitmap{ filename = "b3r.bmp";		description = "6";};
 
 	bitmap{ filename = "j1b.bmp";		description = "7";};
-	bitmap{ filename = "j1g.bmp";		description = "8";};
+	bitmap{ filename = "j1y.bmp";		description = "8";};
 	bitmap{ filename = "j3r.bmp";		description = "9";};
 	bitmap{ filename = "j3b.bmp";		description = "10";};
-	bitmap{ filename = "j4g.bmp";		description = "11";};
+	bitmap{ filename = "j4y.bmp";		description = "11";};
 	bitmap{ filename = "j4r.bmp";		description = "12";};
 
 	bitmap{ filename = "s1b.bmp";		description = "13";};
-	bitmap{ filename = "s1gr.bmp";	description = "14";};
+	bitmap{ filename = "s1g.bmp";	description = "14";};
 	bitmap{ filename = "s2b.bmp";		description = "15";};
 	bitmap{ filename = "s2r.bmp";		description = "16";};
-	bitmap{ filename = "s4gr.bmp";	description = "17";};
+	bitmap{ filename = "s4g.bmp";	description = "17";};
 	bitmap{ filename = "s4r.bmp";		description = "18";};
 
-	bitmap{ filename = "sch2b.bmp";	description = "19";};
-	bitmap{ filename = "sch2g.bmp";	description = "20";};
-	bitmap{ filename = "sch3b.bmp";	description = "21";};
-	bitmap{ filename = "sch3gr.bmp";	description = "22";};
-	bitmap{ filename = "sch4g.bmp";	description = "23";};
-	bitmap{ filename = "sch4gr.bmp";	description = "24";};
+	bitmap{ filename = "c2b.bmp";	description = "19";};
+	bitmap{ filename = "c2y.bmp";	description = "20";};
+	bitmap{ filename = "c3b.bmp";	description = "21";};
+	bitmap{ filename = "c3g.bmp";	description = "22";};
+	bitmap{ filename = "c4y.bmp";	description = "23";};
+	bitmap{ filename = "c4g.bmp";	description = "24";};
 } stimuli;
 
 #This one is not placed in the array because it has to be presented on every page of the experiment
@@ -132,7 +132,7 @@ trial{
 		text correct_t;
 		x = 0; y = 0;
 	};
-	duration = 250;
+	duration = 600;
 	time = 0;
 } correctfeedback;
 	
@@ -142,7 +142,7 @@ trial{
 		text wrong_t;
 		x = 0; y = 0;
 	};
-	duration = 250;
+	duration = 600;
 	time = 0;
 } wrongfeedback;
 
@@ -153,21 +153,29 @@ trial{
 	trial_duration = stimuli_length;
 	correct_feedback = correctfeedback;
 	incorrect_feedback = wrongfeedback;
-	picture{
-		bitmap first;
-		x = 0; y = -300;
-		bitmap options;
-		x = 0 ; y = 300;
-	} pics;
-	target_button = 1;
+	stimulus_event{
+		picture{
+			bitmap first;
+			x = 0; y = -300;
+			bitmap options;
+			x = 0 ; y = 300;
+		} pics;
+	}main_event;	
 }main_trial;
 
 #PCL
 begin_pcl;
 
 #An integer is created to store the converted descriptions that are given to the bitmaps (the stimuli). This will
-#be used to create the different rules (shape, number, color).
-int desc_int;
+#be used to create the different rules (shape, number). A string is created to use later on to create the color rule
+int desc;
+string fn;
+
+sub string removepath (string path_and_file) begin
+	int pathlength = stimulus_directory.count();
+	string file_no_path = path_and_file.substring(pathlength+1, path_and_file.count()-pathlength);
+	return file_no_path;
+end;
 
 #The first loop will be repeated three times, this is done in order to present a totla of 72 stimuli to the participant
 loop
@@ -179,8 +187,76 @@ begin
 		int i = 1 until i > 24 	#This loop is repeated 24 times. This is done because the array containing the stimuli contains 24 stimuli.
 										#The value of i is used to call an object in the array containing all bitmaps. Going beyond 24 would result in an error
 	begin
-		pics.set_part (1, stimuli[i]);
-		desc_int = int(stimuli[i].description());
+		pics.set_part (1, stimuli[i]); # This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
+		desc = int(stimuli[i].description()); #Here the string description of the stimuli are converted to integers, which will be used to create the sorting rules
+		fn = removepath(stimuli[i].filename());
+		string fc = fn.substring(1, 1);
+		string sc = fn.substring(2, 1);
+		string tc = fn.substring(3, 1);
+		#An if then elseif statement is used to create the different rules. Using the value of i and the description given to the stimuli we can then set the correct target button
+		#for each stimulus.
+		if i < 5 then
+			if tc == "r" then
+				main_event.set_target_button(1);
+			elseif tc == "g" then
+				main_event.set_target_button(2);
+			elseif tc == "y" then
+				main_event.set_target_button(3);
+			elseif tc == "b" then
+				main_event.set_target_button(4);
+			end;
+		elseif i > 4 && i < 9 then
+			if fc == "c" then
+				main_event.set_target_button(1);
+			elseif fc == "j" then
+				main_event.set_target_button(2);
+			elseif fc == "s" then
+				main_event.set_target_button(3);
+			elseif fc == "b" then
+				main_event.set_target_button(4);
+			end;
+		elseif i > 8 && i < 13 then
+			if sc == "1" then
+				main_event.set_target_button(1);
+			elseif sc == "2" then
+				main_event.set_target_button(2);
+			elseif sc == "3" then
+				main_event.set_target_button(3);
+			elseif sc == "4" then
+				main_event.set_target_button(4);
+			end;
+		elseif i > 12 && i < 17 then
+			if fc == "c" then
+				main_event.set_target_button(1);
+			elseif fc == "j" then
+				main_event.set_target_button(2);
+			elseif fc == "s" then
+				main_event.set_target_button(3);
+			elseif fc == "b" then
+				main_event.set_target_button(4);
+			end;
+		elseif i > 16 && i < 21 then
+			if tc == "r" then
+				main_event.set_target_button(1);
+			elseif tc == "g" then
+				main_event.set_target_button(2);
+			elseif tc == "y" then
+				main_event.set_target_button(3);
+			elseif tc == "b" then
+				main_event.set_target_button(4);
+			end;
+		elseif i > 20 then
+			if sc == "1" then
+				main_event.set_target_button(1);
+			elseif sc == "2" then
+				main_event.set_target_button(2);
+			elseif sc == "3" then
+				main_event.set_target_button(3);
+			elseif sc == "4" then
+				main_event.set_target_button(4);
+			end;			
+		end;
+		#This first set of if elseif then statements are used for the color rule. The statement concerning i is made so that after 4 stimuli the rule changes
 		main_trial.present();
 		i = i + 1;
 	end;
