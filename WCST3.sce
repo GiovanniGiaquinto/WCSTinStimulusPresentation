@@ -116,23 +116,33 @@ array{
 
 bitmap{ filename = "options.bmp";}options;
 
-#Wrong Answer Feedback
-sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong;
+#Wrong Answer Feedback both auditory and visually
+sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong_s;
+text{ caption ="WRONG!";}wrong_t;
 
 #Right Answer Feedback
-sound{ wavefile {filename = "correct_sound.wav"; }; } correct;
+sound{ wavefile {filename = "correct_sound.wav"; }; } correct_s;
+text { caption = "CORRECT!";} correct_t;
 
 trial{
-	sound correct;
-	duration = 300;
+	sound correct_s;
+	picture{
+		text correct_t;
+		x = 0; y = 0;
+	};
+	duration = 250;
 	time = 0;
-} correct_t;
+} correctfeedback;
 	
 trial{
-	sound wrong;
-	duration = 300;
+	sound wrong_s;
+	picture{
+		text wrong_t;
+		x = 0; y = 0;
+	};
+	duration = 250;
 	time = 0;
-} wrong_t;
+} wrongfeedback;
 
 
 trial{
