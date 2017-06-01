@@ -93,33 +93,33 @@ trial{
 # Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
 # Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
-	bitmap{ filename = "b1y.bmp";		description = "1";}first;
-	bitmap{ filename = "b1g.bmp";	description = "2";};
-	bitmap{ filename = "b2y.bmp";		description = "3";};
-	bitmap{ filename = "b2r.bmp";		description = "4";};
-	bitmap{ filename = "b3g.bmp";	description = "5";};
-	bitmap{ filename = "b3r.bmp";		description = "6";};
+	bitmap{ filename = "b1y.bmp";}first;
+	bitmap{ filename = "b1g.bmp";};
+	bitmap{ filename = "b2y.bmp";};
+	bitmap{ filename = "b2r.bmp";};
+	bitmap{ filename = "b3g.bmp";};
+	bitmap{ filename = "b3r.bmp";};
 
-	bitmap{ filename = "j1b.bmp";		description = "7";};
-	bitmap{ filename = "j1y.bmp";		description = "8";};
-	bitmap{ filename = "j3r.bmp";		description = "9";};
-	bitmap{ filename = "j3b.bmp";		description = "10";};
-	bitmap{ filename = "j4y.bmp";		description = "11";};
-	bitmap{ filename = "j4r.bmp";		description = "12";};
+	bitmap{ filename = "j1b.bmp";};
+	bitmap{ filename = "j1y.bmp";};
+	bitmap{ filename = "j3r.bmp";};
+	bitmap{ filename = "j3b.bmp";};
+	bitmap{ filename = "j4y.bmp";};
+	bitmap{ filename = "j4r.bmp";};
 
-	bitmap{ filename = "s1b.bmp";		description = "13";};
-	bitmap{ filename = "s1g.bmp";	description = "14";};
-	bitmap{ filename = "s2b.bmp";		description = "15";};
-	bitmap{ filename = "s2r.bmp";		description = "16";};
-	bitmap{ filename = "s4g.bmp";	description = "17";};
-	bitmap{ filename = "s4r.bmp";		description = "18";};
+	bitmap{ filename = "s1b.bmp";};
+	bitmap{ filename = "s1g.bmp";};
+	bitmap{ filename = "s2b.bmp";};
+	bitmap{ filename = "s2r.bmp";};
+	bitmap{ filename = "s4g.bmp";};
+	bitmap{ filename = "s4r.bmp";};
 
-	bitmap{ filename = "c2b.bmp";	description = "19";};
-	bitmap{ filename = "c2y.bmp";	description = "20";};
-	bitmap{ filename = "c3b.bmp";	description = "21";};
-	bitmap{ filename = "c3g.bmp";	description = "22";};
-	bitmap{ filename = "c4y.bmp";	description = "23";};
-	bitmap{ filename = "c4g.bmp";	description = "24";};
+	bitmap{ filename = "c2b.bmp";};
+	bitmap{ filename = "c2y.bmp";};
+	bitmap{ filename = "c3b.bmp";};
+	bitmap{ filename = "c3g.bmp";};
+	bitmap{ filename = "c4y.bmp";};
+	bitmap{ filename = "c4g.bmp";};
 } stimuli;
 
 #This one is not placed in the array because it has to be presented on every page of the experiment
@@ -186,9 +186,9 @@ trial{
 	stimulus_event{
 		picture{
 			bitmap first;
-			x = 0; y = -300;
+			x = 0; y = -350;
 			bitmap options;
-			x = 0 ; y = 300;
+			x = 0 ; y = 350;
 		} pics;
 	}main_event;	
 }main_trial;
