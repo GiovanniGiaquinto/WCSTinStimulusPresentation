@@ -63,7 +63,8 @@ picture{ text inst3_text; x = 0; y = 0;} inst3_pic;
 
 #End screen
 text{
-	caption = "This is the end of the experiment! Thank you for you participation!";
+	caption = "This is the end of the experiment! Thank you for you participation!
+				 You may now call the testleader";
 }end;
 picture{ text end; x = 0; y = 0;} end_1;
 
@@ -98,8 +99,9 @@ trial{
 
 #The same is done for the end screen. 
 trial{
+	trial_type = correct_response
 	picture end_1;
-	response_active = false;
+	target_response = 5
 }endscreen;
 # Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
 # Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
