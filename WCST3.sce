@@ -124,7 +124,6 @@ array{
 
 #This one is not placed in the array because it has to be presented on every page of the experiment
 bitmap{ filename = "options.bmp";}options; 
-<<<<<<< HEAD
 
 #Wrong Answer Feedback both auditory and visually
 sound{ 
@@ -135,6 +134,7 @@ sound{
 
 text{ 
 	caption ="WRONG!";
+	font_size = 55;
 	background_color = 202, 0, 42;
 }wrong_t;
 
@@ -147,30 +147,17 @@ sound{
 
 text { 
 	caption = "CORRECT!";
+	font_size = 55;
 	background_color = 174, 217, 167;
 } correct_t;
 
-=======
-
-#Wrong Answer Feedback both auditory and visually
-sound{ wavefile { filename = "wrong_sound.wav" ;}; } wrong_s;
-text{ caption ="WRONG!";}wrong_t;
-
-#Right Answer Feedback both auditory and visually
-sound{ wavefile {filename = "correct_sound.wav"; }; } correct_s;
-text { caption = "CORRECT!";} correct_t;
-
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 #Trials are created presenting both the auditory and visual feedback at the same time. The trials are named so
 #they can be used in the actual experimental trial as feedback using the built-in
 #correct_feedback & incorrect_feedback functions.
 trial{
 	sound correct_s;
 	picture{
-<<<<<<< HEAD
 		background_color = 174, 217, 167;
-=======
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 		text correct_t;
 		x = 0; y = 0;
 	};
@@ -181,10 +168,7 @@ trial{
 trial{
 	sound wrong_s;
 	picture{
-<<<<<<< HEAD
 		background_color = 202, 0, 42;
-=======
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 		text wrong_t;
 		x = 0; y = 0;
 	};
@@ -206,10 +190,6 @@ trial{
 			bitmap options;
 			x = 0 ; y = 300;
 		} pics;
-<<<<<<< HEAD
-	stimulus_time_in = 5000;
-=======
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 	}main_event;	
 }main_trial;
 
@@ -223,7 +203,6 @@ string fn;
 
 # These five objects are created and will be use later on to get a more informative custom output file 
 int lastresponse;
-<<<<<<< HEAD
 int trialnum = 1;
 int reqresp = 0;
 stimulus_data last;
@@ -233,17 +212,6 @@ string rule;
 output_file wcst = new output_file;
 wcst.open (logfile.subject() + "wcst_data.txt");
 wcst.print("Trialnumber\tFilename\tRule\tResponse\tTotalCorrect\tReactiontime\tPercentagemistakes\n");
-=======
-int trialnum = 0;
-int reqresp = 0;
-stimulus_data last;
-double percentagemistakes;
-
-#This creates the custom output file
-output_file wcst = new output_file;
-wcst.open (logfile.subject() + "wcst_data.txt");
-wcst.print("Trialnumber\tFilename\tResponse\tTotalCorrect\tReactiontime\tPercentagemistakes\n");
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 
 #The following subroutine asks for the filename of a stimulus and removes the pathway that is given when the .filename function is used. 
 # This way only the actual filename remains, which later on will be used to create the three sorting rules.
@@ -276,11 +244,7 @@ begin
 					#The value of i is used to call an object in the array containing all bitmaps created in the SDL part. Going beyond 24 would result in an error
 	begin
 		pics.set_part (1, stimuli[i]); 			#This part in the loop uses the value of i to call one of the objects in the array containing all stimuli.
-<<<<<<< HEAD
 		fn = removepath(stimuli[i].filename());#Here the subroutine created above stores the filename in the string object fn
-=======
-		fn = removepath(stimuli[i].filename());#Here the subroutine created above store the filename in the string object fn
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 		string fc = fn.substring(1, 1);			#Using .substring the first letter of the filename stored in fn is called and stored in fc (first charachter)
 		string sc = fn.substring(2, 1);			#Using .substring the second letter of the filename stored in fn is called and stored in sc (second charachter)
 		string tc = fn.substring(3, 1);			#Using .substring the third letter of the filename stored in fn is called and stored in tc (third character)
@@ -360,7 +324,6 @@ begin
 		main_trial.present();
 		# The following lines of code are used to put results in the custom output file.
 		last = stimulus_manager.last_stimulus_data();
-<<<<<<< HEAD
 		lastresponse = last.button();																					#Store the last pressed button response in the object lastresponse
 		percentagemistakes = (response_manager.total_incorrects()/double(trialnum))*100.0;			#This equation calculates the percentage of mistakes that is made 
 		
@@ -369,7 +332,7 @@ begin
 	
 		wcst.print(fc);wcst.print(sc);wcst.print(tc);wcst.print("\t");										#Print filename in custom output
 		
-		if i < 5 then																										#If then statements to store the rule in the string object rule
+		if i < 5 then																										#This if statement is used to store the active rule in the rule object
 			rule = "Color";
 		elseif i > 4 && i < 9 then
 			rule = "Shape";
@@ -382,25 +345,13 @@ begin
 		elseif i > 20 then
 			rule = "Number";
 		end;
-		wcst.print(rule); wcst.print("\t");																			#Print the active rule in custom output
+		wcst.print(rule); wcst.print("\t");																			#Prints the active rule in the output			
 			
 			
 		wcst.print(lastresponse); wcst.print("\t");																#Prints response given in custom output
 		wcst.print(response_manager.total_hits());wcst.print("\t");											#Print total correct answers uptill that point in custom output
 		wcst.print(last.reaction_time());wcst.print("\t");														#Prints the Reactiontime for that response
 		wcst.print(percentagemistakes);wcst.print("\n");														#Prints the percantageof mistakes uptill that point
-=======
-		lastresponse = last.button();															#Store the last pressed button response in the object lastresponse
-		percentagemistakes = (response_manager.total_incorrects()/72.0)*100.0;	#This equation calculates the percentage of mistakes that is made 
-		trialnum = trialnum+1;																	#This is used to count the amount of trials which can then be printed in the custom output
-		
-		wcst.print(trialnum); wcst.print("\t");											#Actually prints trialnum in custom output and then puts in a tab
-		wcst.print(fc);wcst.print(sc);wcst.print(tc);wcst.print("\t");				#Print filename in custom output
-		wcst.print(lastresponse); wcst.print("\t");										#Prints response given in custom output
-		wcst.print(response_manager.total_hits());wcst.print("\t");					#Print total correct answers uptill that point in custom output
-		wcst.print(last.reaction_time());wcst.print("\t");								#Prints the Reactiontime for that response
-		wcst.print(percentagemistakes);wcst.print("\n");								#Prints the percantageof mistakes uptill that point
->>>>>>> fecb690f284a67e0588bc6999820b875bd93f1d5
 		
 		i = i + 1;
 	end;

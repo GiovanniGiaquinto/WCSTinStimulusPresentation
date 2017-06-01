@@ -1,1 +1,0 @@
-Trialnumber	Filename	Response	TotalCorrect	Reactiontime	Percentagemistakes
