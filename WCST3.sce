@@ -61,6 +61,12 @@ text{ caption = "
 picture{ text inst1_text; x = 0; y = 0;} inst1_pic;
 picture{ text inst3_text; x = 0; y = 0;} inst3_pic;
 
+#End screen
+text{
+	caption = "This is the end of the experiment! Thank you for you participation!";
+}end;
+picture{ text end; x = 0; y = 0;} end_1;
+
 #instruction page example of experiment
 bitmap{ filename = "options.bmp";} qoptions;
 bitmap{ filename = "b1g.bmp"; } qb1g;
@@ -90,6 +96,11 @@ trial{
 	} instruction_page3;
 }start_screen;
 
+#The same is done for the end screen. 
+trial{
+	picture end_1;
+	response_active = false;
+}endscreen;
 # Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
 # Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
@@ -189,6 +200,10 @@ trial{
 			x = 0; y = -350;
 			bitmap options;
 			x = 0 ; y = 350;
+			text{
+				caption = "Select a card pile";
+			};
+			x = 0; y = 0;
 		} pics;
 	}main_event;	
 }main_trial;
@@ -357,3 +372,5 @@ begin
 	end;
 	j = j + 1
 end;
+
+endscreen.present();
