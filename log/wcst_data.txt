@@ -1,0 +1,17 @@
+Trialnumber	Filename	Response	TotalCorrect	Reactiontime	Percentagemistakes
+1	j4y	0	0	0	0
+2	b1y	0	0	0	0
+3	s1b	0	0	0	0
+4	b3g	0	0	0	0
+5	j1y	0	0	0	0
+6	b3r	0	0	0	0
+7	c3g	0	0	0	0
+8	s1g	0	0	0	0
+9	b1g	0	0	0	0
+10	c2b	0	0	0	0
+11	s2b	0	0	0	0
+12	j4r	0	0	0	0
+13	s4r	0	0	0	0
+14	c3b	0	0	0	0
+15	s2r	0	0	0	0
+16	j1b	0	0	0	0

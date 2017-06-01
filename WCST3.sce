@@ -10,7 +10,9 @@ default_trial_type = first_response;
 default_picture_duration = response;
 
 
-#SDL
+#######################################################################################################
+#																SDL																	#
+#######################################################################################################
 begin;
 
 
@@ -171,7 +173,9 @@ trial{
 	}main_event;	
 }main_trial;
 
-#PCL
+#######################################################################################################
+#																PCL																	#
+#######################################################################################################
 begin_pcl;
 
 #A string object is created to use later on to create the three sorting rules
@@ -198,7 +202,6 @@ sub string removepath (string path_and_file) begin
 end;
 
 #######################################################################################################
-#																																		#
 #										Actual coding of Experimental flow													#
 #														starts here																	#
 #######################################################################################################
@@ -302,7 +305,7 @@ begin
 		# The following lines of code are used to put results in the custom output file.
 		last = stimulus_manager.last_stimulus_data();
 		lastresponse = last.button();															#Store the last pressed button response in the object lastresponse
-		percentagemistakes = (response_manager.total_incorrects()/72.0)*100.0;		#This equation calculates the percentage of mistakes that is made 
+		percentagemistakes = (response_manager.total_incorrects()/72.0)*100.0;	#This equation calculates the percentage of mistakes that is made 
 		trialnum = trialnum+1;																	#This is used to count the amount of trials which can then be printed in the custom output
 		
 		wcst.print(trialnum); wcst.print("\t");											#Actually prints trialnum in custom output and then puts in a tab
