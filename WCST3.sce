@@ -99,10 +99,8 @@ trial{
 
 #The same is done for the end screen. 
 trial{
-	trial_type = correct_response
 	picture end_1;
-	target_response = 5
-}endscreen;
+	}end_screen;
 # Coding of all stimuli. All stimuli are placed in an array. This is done so we only have to create a single trial for the experiment.
 # Using PCL we can later on then replace the picture in the one trial with another stimulus in the array.
 array{
@@ -209,6 +207,57 @@ trial{
 		} pics;
 	}main_event;	
 }main_trial;
+
+
+#The next lines of code are for creating the demographic questions
+#This is the age question
+trial {
+	trial_type = first_response;
+	stimulus_event	{ 
+		picture { 
+			text {
+				caption = "How old are you?
+							  After entering your age press the enter button to go to the next page";
+			};
+		x = 50; y = 10;
+		};
+	};
+} age_q;
+
+#This is the gender question
+trial {
+	trial_type = first_response;
+	stimulus_event	{ 
+		picture { 
+			text {
+				caption = "What is your gender?
+							  After entering your age press the enter button to go to the next page";
+			};
+		x = 50; y = 10;
+		};
+	};
+} gender_q;
+#This is the frequency of cannabis use question
+trial {
+	trial_type = first_response;
+	stimulus_event	{ 
+		picture { 
+			text {
+				caption = "Do you, on average, smoke at least 5 joint per week?
+							  After entering your age press the enter button to go to the next page";
+			};
+		x = 50; y = 10;
+		};
+	};
+} frequency_q;
+
+#This trial needs to be made so that the participants can enter text
+trial {
+    stimulus_event {
+        picture { text { caption = " "; } input_text; x = 50; y = 10;
+        } input_pic;
+    } input_event;
+} input_trial;
 
 #######################################################################################################
 #																PCL																	#
@@ -375,4 +424,4 @@ begin
 	j = j + 1
 end;
 
-endscreen.present();
+end_screen.present();

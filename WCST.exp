@@ -338,7 +338,7 @@
 <require_name_match>0</require_name_match>
 <reschg>1</reschg>
 <rng>1</rng>
-<rts>1</rts>
+<rts>0</rts>
 <sce>
 <idv>
 <device_type>3</device_type>
@@ -466,4 +466,4 @@
 <unc></unc>
 <upb>0</upb>
 <urp>0</urp>
-<wob>1</wob>
+<wob>0</wob>
