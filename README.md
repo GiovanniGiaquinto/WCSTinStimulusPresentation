@@ -7,7 +7,8 @@ In this README file aside from an explanation for what this experiment can be us
 frequent cannabis users. The idea is that cannabis users:
 1. Make more mistakes in general then non-cannabis users
 2. Will, in general, have slower reaction times then non-cannabis users
-3. Will have slower reaction times when the rule changes from the shape rule to a different rule
+3. Will have slower reaction times when a card depicting a cannabis stimulus is presented
+4. Will have slower reaction times when the rule changes from the shape rule to a different rule
 
 Pointers on how to use this scenario:
 
